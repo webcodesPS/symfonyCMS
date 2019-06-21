@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity repository-class="App\Repository\MenuRepository" name="App\Entity\Menu" table="menu">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <one-to-one field="parent" target-entity="App\Entity\Menu">
+            <cascade><cascade-remove /></cascade>
+            <join-column name="parent_id" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>
+        </one-to-one>
+
+        <field name="name" type="string" column="name" length="128" nullable="true"/>
+
+        <one-to-many field="translates" target-entity="App\Entity\TranslateMenu" mapped-by="menu" />
+
+        <many-to-one field="page" target-entity="App\Entity\Page" inversed-by="menus">
+            <join-column name="page_id" referenced-column-name="id" nullable="true" />
+        </many-to-one>
+
+    </entity>
+</doctrine-mapping>

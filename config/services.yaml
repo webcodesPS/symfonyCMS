@@ -1,0 +1,126 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+    defaults:
+        locale: pl
+    requirements:
+        locale:  pl|en
+    mailer_user: 'test@localhost.local'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Application,Kernel.php}'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    App\Repository\:
+        resource: '../src/Repository'
+        autowire: true
+        tags: ['doctrine.repository_service']
+
+
+
+    # SONATA ADMIN DACHBOARD GROUPS
+    app.admin.page:
+        class: App\Admin\PageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Page" }
+        arguments:
+            - ~
+            - App\Entity\Page
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
+    app.admin.home:
+        class: App\Admin\HomeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Home" }
+        arguments:
+            - ~
+            - App\Entity\Home
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
+    app.admin.menu:
+        class: App\Admin\MenuAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Menu" }
+        arguments:
+            - ~
+            - App\Entity\Menu
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
+    app.admin.translate.menu:
+        class: App\Admin\TranslateMenuAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Menu content" }
+        arguments:
+            - ~
+            - App\Entity\TranslateMenu
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
+    app.admin.translate.home:
+        class: App\Admin\TranslateHomeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Home content" }
+        arguments:
+            - ~
+            - App\Entity\TranslateHome
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
+    app.admin.translate.page:
+        class: App\Admin\TranslatePageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Page content" }
+        arguments:
+            - ~
+            - App\Entity\TranslatePage
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
+    app.admin.translate.media:
+        class: App\Admin\TranslateMediaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Content Media" }
+        arguments:
+            - ~
+            - App\Entity\TranslateMedia
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+

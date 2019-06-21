@@ -1,0 +1,11 @@
+.env
+/vendor/
+composer.lock
+.phpunit
+/phpunit.xml
+.idea
+/var/
+var/log/*
+/public/bundles/
+node_modules
+

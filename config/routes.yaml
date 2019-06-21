@@ -1,0 +1,35 @@
+app_index_index:
+    path: /{_locale}
+    controller: App\Controller\IndexController::index
+    prefix:   /{_locale}
+    requirements:
+        _locale: pl|en|fr|de
+    defaults: { _locale: pl}
+
+app_index_list:
+    path:      /{_locale}/{page}
+    controller: App\Controller\IndexController::page
+    requirements:
+        _locale: pl|en|fr|de
+    defaults: { _locale: pl}
+
+default:
+    path:      /{page}
+    controller: App\Controller\IndexController::page
+
+# SONATA
+sonata_user_admin_security:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    prefix: /admin
+
+sonata_user_admin_resetting:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_resetting.xml'
+    prefix: /admin/resetting
+
+gallery:
+    resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
+    prefix: /media/gallery
+
+media:
+    resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
+    prefix: /media
