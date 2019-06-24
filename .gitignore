@@ -1,11 +1,13 @@
 .env
 /vendor/
 composer.lock
+symfony.lock
 .phpunit
 /phpunit.xml
 .idea
 /var/
 var/log/*
 /public/bundles/
+/public/upload/
 node_modules
 

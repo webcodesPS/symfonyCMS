@@ -115,7 +115,7 @@ services:
     app.admin.translate.media:
         class: App\Admin\TranslateMediaAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Content Media" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Media content" }
         arguments:
             - ~
             - App\Entity\TranslateMedia

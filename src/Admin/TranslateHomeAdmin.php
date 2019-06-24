@@ -39,9 +39,14 @@ class TranslateHomeAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('name', null, array('label' => 'Name'))
-            ->addIdentifier('home', null, array('label' => 'Home'))
             ->add('translate', 'html', array('label' => 'Translate'))
             ->add('locale', null, array('label' => 'Locale'))
+            ->add('_action', null, array(
+                'actions' => array(
+                    'edit' => array(),
+                    'delete' => array(),
+                ),
+            ))
         ;
     }
 
