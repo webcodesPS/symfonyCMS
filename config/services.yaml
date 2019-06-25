@@ -37,13 +37,15 @@ services:
         autowire: true
         tags: ['doctrine.repository_service']
 
-
+    App\Twig\AppExtension:
+        arguments: ["@doctrine", "@request_stack", "@translator"]
+        tags: ['twig.extension']
 
     # SONATA ADMIN DACHBOARD GROUPS
     app.admin.page:
         class: App\Admin\PageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Page" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Pages" }
         arguments:
             - ~
             - App\Entity\Page
@@ -55,7 +57,7 @@ services:
     app.admin.home:
         class: App\Admin\HomeAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Home" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Home page" }
         arguments:
             - ~
             - App\Entity\Home
@@ -79,7 +81,7 @@ services:
     app.admin.translate.menu:
         class: App\Admin\TranslateMenuAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Menu content" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Menu" }
         arguments:
             - ~
             - App\Entity\TranslateMenu
@@ -91,7 +93,7 @@ services:
     app.admin.translate.home:
         class: App\Admin\TranslateHomeAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Home content" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Home" }
         arguments:
             - ~
             - App\Entity\TranslateHome
@@ -103,7 +105,7 @@ services:
     app.admin.translate.page:
         class: App\Admin\TranslatePageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Page content" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Page" }
         arguments:
             - ~
             - App\Entity\TranslatePage
@@ -115,7 +117,7 @@ services:
     app.admin.translate.media:
         class: App\Admin\TranslateMediaAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Media content" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Media" }
         arguments:
             - ~
             - App\Entity\TranslateMedia

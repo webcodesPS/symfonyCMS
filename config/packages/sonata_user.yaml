@@ -5,8 +5,8 @@ sonata_user:
     class:
         user: App\Application\Sonata\UserBundle\Entity\User
         group: App\Application\Sonata\UserBundle\Entity\Group
-#    admin:            # Admin Classes
-#        user:
-#            class:    Application\Sonata\UserBundle\Admin\Model\UserAdmin
+    admin:
+        user:
+            class: App\Application\Sonata\UserBundle\Admin\UserAdmin
 #        group:
 #            class:    Application\Sonata\UserBundle\Admin\Model\GroupAdmin
