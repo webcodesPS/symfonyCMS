@@ -97,7 +97,8 @@ services:
         arguments:
             - ~
             - App\Entity\TranslateHome
-            - ~
+            - App\Controller\Admin\TranslateHomeAdminController
+            - 'PixSortableBehaviorBundle:SortableAdmin'
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
@@ -109,7 +110,7 @@ services:
         arguments:
             - ~
             - App\Entity\TranslatePage
-            - ~
+            - 'PixSortableBehaviorBundle:SortableAdmin'
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true

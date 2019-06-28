@@ -49,6 +49,9 @@ sonata_admin:
     assets:
         extra_stylesheets:
             - bundles/sonatatranslation/css/sonata-translation.css
+#        extra_javascripts:
+#            - bundles/pixsortablebehavior/js/jquery-ui.min.js
+#            - bundles/pixsortablebehavior/js/init.js
 
 sonata_block:
     blocks:

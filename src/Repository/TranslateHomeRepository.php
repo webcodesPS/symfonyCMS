@@ -19,6 +19,20 @@ class TranslateHomeRepository extends ServiceEntityRepository
         parent::__construct($registry, TranslateHome::class);
     }
 
+    public function findByExampleField($value)
+    {
+        $query = $this->createQueryBuilder('th')
+            ->select('th.locale')
+            ->where('th.home = 1');
+        $array1 = $query->getQuery()->getArrayResult();
+        $array2 = TranslateHome::getLocaleList();
+//        print_r($array1[]);
+//        print_r($array2);
+//        echo $output = array_merge(array_diff($array1, $array2), array_diff($array2, $array1));
+
+        return [];
+    }
+
     // /**
     //  * @return TranslateHome[] Returns an array of TranslateHome objects
     //  */

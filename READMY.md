@@ -27,3 +27,5 @@ $ php bin/console doctrine:mapping:import "App\Entity" xml --path=config/doctrin
 $ php bin/console make:migration
 
 $ php bin/console make:entity --regenerate App
+
+$ bin/console assets:install

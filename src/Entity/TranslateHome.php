@@ -11,6 +11,8 @@ class TranslateHome
 
     private $locale;
 
+    private $position;
+
     private $name;
 
     private $translate;
@@ -52,6 +54,18 @@ class TranslateHome
     public function setLocale(?string $locale): self
     {
         $this->locale = $locale;
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?int $position): self
+    {
+        $this->position = $position;
 
         return $this;
     }
