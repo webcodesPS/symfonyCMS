@@ -8,8 +8,8 @@ sonata_admin:
                 label: Website
                 icon: '<i class="fa fa-cogs" aria-hidden="true"></i>'
                 items:
-                    - app.admin.menu
                     - app.admin.home
+                    - app.admin.menu
                     - app.admin.page
                 roles: [ ROLE_ADMIN ]
             translation:
@@ -49,7 +49,8 @@ sonata_admin:
     assets:
         extra_stylesheets:
             - bundles/sonatatranslation/css/sonata-translation.css
-#        extra_javascripts:
+        extra_javascripts:
+            - assets/sonata/script.js
 #            - bundles/pixsortablebehavior/js/jquery-ui.min.js
 #            - bundles/pixsortablebehavior/js/init.js
 

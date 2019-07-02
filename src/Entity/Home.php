@@ -18,19 +18,21 @@ class Home
 
     private $id;
 
-    private $menus;
-
     private $translates;
 
     private $galleries;
 
     public function __construct()
     {
-        $this->menus = new ArrayCollection();
         $this->translates = new ArrayCollection();
         $this->galleries = new ArrayCollection();
     }
 
+    /**
+     * Represent object as string
+     *
+     * @return string
+     */
     public function __toString()
     {
         return $this->name ?: '';
@@ -87,37 +89,6 @@ class Home
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     * @return Collection|Menu[]
-     */
-    public function getMenus(): Collection
-    {
-        return $this->menus;
-    }
-
-    public function addMenu(Menu $menu): self
-    {
-        if (!$this->menus->contains($menu)) {
-            $this->menus[] = $menu;
-            $menu->setHome($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMenu(Menu $menu): self
-    {
-        if ($this->menus->contains($menu)) {
-            $this->menus->removeElement($menu);
-            // set the owning side to null (unless already changed)
-            if ($menu->getHome() === $this) {
-                $menu->setHome(null);
-            }
-        }
-
-        return $this;
     }
 
     /**

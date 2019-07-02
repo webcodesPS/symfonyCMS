@@ -4,11 +4,6 @@ namespace App\Entity;
 
 class TranslateHome
 {
-    const LOCALE_EN = 'en';
-    const LOCALE_PL = 'pl';
-    const LOCALE_FR = 'fr';
-    const LOCALE_DE = 'de';
-
     private $locale;
 
     private $position;
@@ -29,21 +24,6 @@ class TranslateHome
     public function __toString()
     {
         return $this->name ?: '';
-    }
-
-    /**
-     * Return frequency list
-     *
-     * @return array
-     */
-    public static function getLocaleList(): array
-    {
-        return [
-            self::LOCALE_PL => 'pl',
-            self::LOCALE_EN => 'en',
-            self::LOCALE_FR => 'fr',
-            self::LOCALE_DE => 'de',
-        ];
     }
 
     public function getLocale(): ?string

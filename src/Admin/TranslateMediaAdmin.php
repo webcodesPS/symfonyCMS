@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use App\Entity\TranslatePage;
+use App\Service\Helper;
 
 class TranslateMediaAdmin extends AbstractAdmin
 {
@@ -19,10 +19,14 @@ class TranslateMediaAdmin extends AbstractAdmin
             ->add('media', null, array('label' => 'Add to media'))
             ->add('locale', ChoiceFieldMaskType::class, [
                 'label' => 'Locale',
-                'choices' => TranslatePage::getLocaleList(),
-                'required' => false
+                'choices' => Helper::getLocaleList(),
+                'required' => true
             ])
-            ->add('name', null, array('label' => 'Translate name'))
+            ->add('name', null, [
+                    'label' => 'Translate name',
+                    'required' => true
+                ]
+            )
             ->add('description', TextareaType::class,
                 array(
                     'attr' => array('class' => 'ckeditor'),
@@ -44,8 +48,8 @@ class TranslateMediaAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('media', null, array('label' => 'Media'))
             ->add('name', null, array('label' => 'Translate name'))
-            ->add('description', 'html', array('label' => 'Translate description'))
             ->add('locale', null, array('label' => 'Locale'))
+            ->add('description', 'html', array('label' => 'Translate description'))
         ;
     }
 

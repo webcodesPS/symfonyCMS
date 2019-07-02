@@ -11,6 +11,7 @@
     <entity
         name="App\Application\Sonata\MediaBundle\Entity\GalleryHasMedia"
         table="media__gallery_media"
+        repository-class="App\Repository\GalleryHasMediaRepository"
         >
 
         <id name="id" type="integer" column="id">

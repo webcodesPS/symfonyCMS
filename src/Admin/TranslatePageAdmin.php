@@ -9,10 +9,11 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
-use App\Entity\TranslatePage;
+use App\Service\Helper;
 
 class TranslatePageAdmin extends AbstractAdmin
 {
+
     protected $datagridValues = [
         '_page' => 1,
         '_sort_order' => 'ASC',
@@ -27,12 +28,19 @@ class TranslatePageAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', null, array('label' => 'Name'))
-            ->add('page', null, array('label' => 'Add to page'))
+            ->add('name', null, [
+                    'label' => 'Translate name',
+                    'required' => true
+                ]
+            )
+            ->add('page', null, [
+                    'label' => 'Add to page'
+                ]
+            )
             ->add('locale', ChoiceFieldMaskType::class, [
                 'label' => 'Locale',
-                'choices' => TranslatePage::getLocaleList(),
-                'required' => false
+                'choices' => Helper::getLocaleList(),
+                'required' => true
             ])
             ->add('translate', TextareaType::class, array('attr' => array('class' => 'ckeditor')))
         ;
@@ -42,7 +50,6 @@ class TranslatePageAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('name', null, array('label' => 'Name'))
-            ->add('page', null, array('label' => 'Page'))
         ;
     }
 
@@ -50,9 +57,8 @@ class TranslatePageAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('name', null, array('label' => 'Name'))
-            ->addIdentifier('page', null, array('label' => 'Page'))
-            ->add('translate', 'html', array('label' => 'Translate'))
             ->add('locale', null, array('label' => 'Locale'))
+            ->add('translate', 'html', array('label' => 'Translate'))
             ->add('_action', null, array(
                 'actions' => array(
                     'edit' => array(),

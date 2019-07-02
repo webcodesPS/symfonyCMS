@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 class HomeAdmin extends AbstractAdmin
 {
+
     protected function configureRoutes(RouteCollection $collection): void
     {
         $collection->remove('create');
@@ -19,29 +20,32 @@ class HomeAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', null, array('label' => 'Name'))
-            ->add('slug', null, array('label' => 'Slug'))
-            ->add('galleries', null, array('label' => 'Add galleries'))
+            ->add('name', null, [
+                'label' => 'Name',
+                'required' => true
+                ]
+            )
+            ->add('galleries', null, ['label' => 'Add galleries'])
         ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, array('label' => 'Name'))
+            ->add('name', null, ['label' => 'Name'])
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', null, array('label' => 'Name'))
-            ->add('slug', null, array('label' => 'Slug'))
-            ->add('_action', null, array(
-                'actions' => array(
-                    'edit' => array(),
-                ),
-            ))
+            ->addIdentifier('name', null, ['label' => 'Name'])
+            ->add('translates', null, ['label' => 'Translate content'])
+            ->add('_action', null, [
+                'actions' => [
+                    'edit' => [],
+                ],
+            ])
         ;
     }
 

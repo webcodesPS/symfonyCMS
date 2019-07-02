@@ -16,6 +16,8 @@ class Page
 
     private $createdAt;
 
+    private $position;
+
     private $id;
 
     private $menus;
@@ -31,6 +33,11 @@ class Page
         $this->galleries = new ArrayCollection();
     }
 
+    /**
+     * Represent object as string
+     *
+     * @return string
+     */
     public function __toString()
     {
         return $this->name ?: '';
@@ -80,6 +87,18 @@ class Page
     public function setCreatedAt(?\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?int $position): self
+    {
+        $this->position = $position;
 
         return $this;
     }

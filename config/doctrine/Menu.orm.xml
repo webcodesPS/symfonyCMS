@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
     <entity repository-class="App\Repository\MenuRepository" name="App\Entity\Menu" table="menu">
 
         <id name="id" type="integer" column="id">
@@ -20,6 +21,10 @@
         <many-to-one field="page" target-entity="App\Entity\Page" inversed-by="menus">
             <join-column name="page_id" referenced-column-name="id" nullable="true" />
         </many-to-one>
+
+        <field name="position" type="integer" nullable="true">
+            <gedmo:sortable-position/>
+        </field>
 
     </entity>
 </doctrine-mapping>

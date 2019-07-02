@@ -7,5 +7,9 @@ breadcrumb:
   link_translate_page_list: Content page list
   link_translate_menu_list: Content menu list
   link_translate_media_list: Content media list
+  link_translate_home_create: Content home create
 list:
   label__action: Action
+  label_translates: Translate content
+form:
+  label_translate: Tłumaczenie

@@ -9,6 +9,8 @@ class Menu
 {
     private $name;
 
+    private $position;
+
     private $id;
 
     private $parent;
@@ -22,6 +24,11 @@ class Menu
         $this->translates = new ArrayCollection();
     }
 
+    /**
+     * Represent object as string
+     *
+     * @return string
+     */
     public function __toString()
     {
         return $this->name ?: '';
@@ -35,6 +42,18 @@ class Menu
     public function setName(?string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?int $position): self
+    {
+        $this->position = $position;
 
         return $this;
     }

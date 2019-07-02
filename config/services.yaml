@@ -41,19 +41,10 @@ services:
         arguments: ["@doctrine", "@request_stack", "@translator"]
         tags: ['twig.extension']
 
-    # SONATA ADMIN DACHBOARD GROUPS
-    app.admin.page:
-        class: App\Admin\PageAdmin
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Pages" }
-        arguments:
-            - ~
-            - App\Entity\Page
-            - ~
-        calls:
-            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+    App\Service\Helper:
         public: true
 
+    # SONATA ADMIN DACHBOARD GROUPS
     app.admin.home:
         class: App\Admin\HomeAdmin
         tags:
@@ -69,11 +60,23 @@ services:
     app.admin.menu:
         class: App\Admin\MenuAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Menu" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Menu subpages" }
         arguments:
             - ~
             - App\Entity\Menu
+            - 'PixSortableBehaviorBundle:SortableAdmin'
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
+    app.admin.page:
+        class: App\Admin\PageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Subpages" }
+        arguments:
             - ~
+            - App\Entity\Page
+            - 'PixSortableBehaviorBundle:SortableAdmin'
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
@@ -97,7 +100,7 @@ services:
         arguments:
             - ~
             - App\Entity\TranslateHome
-            - App\Controller\Admin\TranslateHomeAdminController
+#            - App\Controller\Admin\TranslateHomeAdminController
             - 'PixSortableBehaviorBundle:SortableAdmin'
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]

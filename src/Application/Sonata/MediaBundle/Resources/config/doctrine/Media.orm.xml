@@ -17,5 +17,7 @@
             <generator strategy="AUTO"/>
         </id>
 
+        <one-to-many field="translates" target-entity="App\Entity\TranslateMedia" mapped-by="media" />
+
     </entity>
 </doctrine-mapping>

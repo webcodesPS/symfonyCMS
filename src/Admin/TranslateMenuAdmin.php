@@ -7,7 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
-use App\Entity\TranslatePage;
+use App\Service\Helper;
 
 class TranslateMenuAdmin extends AbstractAdmin
 {
@@ -18,8 +18,8 @@ class TranslateMenuAdmin extends AbstractAdmin
             ->add('menu', null, array('label' => 'Add to menu'))
             ->add('locale', ChoiceFieldMaskType::class, [
                 'label' => 'Locale',
-                'choices' => TranslatePage::getLocaleList(),
-                'required' => false
+                'choices' => Helper::getLocaleList(),
+                'required' => true
             ])
             ->add('translate', null, array('label' => 'Translate'))
         ;
@@ -36,8 +36,8 @@ class TranslateMenuAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('menu', null, array('label' => 'Menu'))
-            ->add('translate', null, array('label' => 'Translate'))
             ->add('locale', null, array('label' => 'Locale'))
+            ->add('translate', null, array('label' => 'Translate'))
         ;
     }
 

@@ -8,8 +8,9 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
-use App\Entity\TranslateHome;
+use App\Service\Helper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class TranslateHomeAdmin extends AbstractAdmin
 {
@@ -30,10 +31,14 @@ class TranslateHomeAdmin extends AbstractAdmin
 //        print_r($pageArray);
 
         $formMapper
-            ->add('name', null, array('label' => 'Name'))
+            ->add('name', TextType::class, [
+                    'attr' => ['class' => 'form-control'],
+                    'label' => 'Name',
+                    'required' => true
+                ]
+            )
             ->add('home', null, array('label' => 'Add to home',
             'class' => 'App\Entity\Home',
-            'required' => true,
             'query_builder' =>
                 function($qb) {
                     return $qb->createQueryBuilder('h')->where('h.id = 1');
@@ -41,8 +46,8 @@ class TranslateHomeAdmin extends AbstractAdmin
             ))
             ->add('locale', ChoiceFieldMaskType::class, [
                 'label' => 'Locale',
-                'choices' => TranslateHome::getLocaleList(),
-                'required' => false
+                'choices' => Helper::getLocaleList(),
+                'required' => true
             ])
             ->add('translate', TextareaType::class, array('attr' => array('class' => 'ckeditor')))
         ;
@@ -60,8 +65,8 @@ class TranslateHomeAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('name', null, array('label' => 'Name'))
-            ->add('translate', 'html', array('label' => 'Translate'))
             ->add('locale', null, array('label' => 'Locale'))
+            ->add('translate', 'html', array('label' => 'Translate'))
             ->add('_action', null, array(
                 'actions' => array(
                     'edit' => array(),

@@ -23,8 +23,6 @@
             <gedmo:timestampable on="create"/>
         </field>
 
-        <one-to-many field="menus" target-entity="App\Entity\Menu" mapped-by="home" />
-
         <one-to-many field="translates" target-entity="App\Entity\TranslateHome" mapped-by="home" />
 
         <many-to-many field="galleries" target-entity="App\Application\Sonata\MediaBundle\Entity\Gallery">

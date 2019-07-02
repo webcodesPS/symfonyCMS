@@ -23,6 +23,10 @@
             <gedmo:timestampable on="create"/>
         </field>
 
+        <field name="position" type="integer" nullable="true">
+            <gedmo:sortable-position/>
+        </field>
+
         <one-to-many field="menus" target-entity="App\Entity\Menu" mapped-by="page" />
 
         <one-to-many field="translates" target-entity="App\Entity\TranslatePage" mapped-by="page" />
