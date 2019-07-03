@@ -9,6 +9,8 @@ class Menu
 {
     private $name;
 
+    private $enabled;
+
     private $position;
 
     private $id;
@@ -42,6 +44,18 @@ class Menu
     public function setName(?string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): self
+    {
+        $this->enabled = $enabled;
 
         return $this;
     }

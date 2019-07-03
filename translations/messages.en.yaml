@@ -8,8 +8,11 @@ breadcrumb:
   link_translate_menu_list: Content menu list
   link_translate_media_list: Content media list
   link_translate_home_create: Content home create
+  link_translate_menu_create: Content menu create
 list:
   label__action: Action
   label_translates: Translate content
+  label_enabled: Enabled
 form:
   label_translate: Tłumaczenie
+  label_enabled: is Enabled

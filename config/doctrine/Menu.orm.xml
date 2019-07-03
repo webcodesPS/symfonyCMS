@@ -16,6 +16,8 @@
 
         <field name="name" type="string" column="name" length="128" nullable="true"/>
 
+        <field name="enabled" type="boolean" column="enabled"/>
+
         <one-to-many field="translates" target-entity="App\Entity\TranslateMenu" mapped-by="menu" />
 
         <many-to-one field="page" target-entity="App\Entity\Page" inversed-by="menus">

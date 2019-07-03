@@ -30,6 +30,11 @@ class MenuAdmin extends AbstractAdmin
                 ]
             )
             ->add('page', null, array('label' => 'Add page'))
+            ->add('enabled', null, [
+                'attr' => ['checked' => 'checked'],
+                'label' => 'Is menu enabled'
+            ]
+            )
         ;
     }
 
@@ -46,6 +51,7 @@ class MenuAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('name', null, array('label' => 'Name'))
             ->add('page', null, array('label' => 'Page'))
+            ->add('enabled', null, ['editable' => true])
             ->add('_action', null, array(
                 'actions' => array(
                     'edit' => array(),
