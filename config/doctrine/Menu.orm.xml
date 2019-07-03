@@ -9,12 +9,11 @@
             <generator strategy="AUTO"/>
         </id>
 
-        <one-to-one field="parent" target-entity="App\Entity\Menu">
-            <cascade><cascade-remove /></cascade>
-            <join-column name="parent_id" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>
-        </one-to-one>
-
         <field name="name" type="string" column="name" length="128" nullable="true"/>
+
+        <indexes>
+            <index name="name_idx" columns="name"/>
+        </indexes>
 
         <field name="enabled" type="boolean" column="enabled"/>
 
@@ -27,6 +26,36 @@
         <field name="position" type="integer" nullable="true">
             <gedmo:sortable-position/>
         </field>
+
+        <field name="left" column="lft" type="integer">
+            <gedmo:tree-left/>
+        </field>
+
+        <field name="right" column="rgt" type="integer">
+            <gedmo:tree-right/>
+        </field>
+
+        <field name="level" column="lvl" type="integer">
+            <gedmo:tree-level/>
+        </field>
+
+        <many-to-one field="root" target-entity="App\Entity\Menu">
+            <join-column name="tree_root" referenced-column-name="id" on-delete="CASCADE"/>
+            <gedmo:tree-root/>
+        </many-to-one>
+
+        <many-to-one field="parent" target-entity="App\Entity\Menu" inversed-by="children">
+            <join-column name="parent_id" referenced-column-name="id" on-delete="CASCADE"/>
+            <gedmo:tree-parent/>
+        </many-to-one>
+
+        <one-to-many field="children" target-entity="App\Entity\Menu" mapped-by="parent">
+            <order-by>
+                <order-by-field name="left" direction="ASC" />
+            </order-by>
+        </one-to-many>
+
+        <gedmo:tree type="nested"/>
 
     </entity>
 </doctrine-mapping>
