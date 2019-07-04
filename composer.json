@@ -8,6 +8,7 @@
         "friendsofsymfony/rest-bundle": "^2.5",
         "nelmio/api-doc-bundle": "^3.4",
         "pixassociates/sortable-behavior-bundle": "^1.5",
+        "redcode/tree-bundle": "^0.1.0@alpha",
         "sensio/framework-extra-bundle": "^5.1",
         "sonata-project/admin-bundle": "^3.49",
         "sonata-project/doctrine-orm-admin-bundle": "^3.9",

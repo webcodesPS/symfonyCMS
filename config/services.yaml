@@ -65,6 +65,7 @@ services:
             - ~
             - App\Entity\Menu
             - 'PixSortableBehaviorBundle:SortableAdmin'
+            - 'tree'
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true

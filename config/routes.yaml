@@ -17,6 +17,10 @@ default:
     path:      /{page}
     controller: App\Controller\IndexController::page
 
+redcode_tree:
+    resource: "@RedCodeTreeBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 # SONATA
 sonata_user_admin_security:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'

@@ -45,12 +45,15 @@ sonata_admin:
 
     templates:
         edit: sonata/edit.html.twig
+        outer_list_rows_tree: sonata/list_outer_rows_tree.html.twig
 
     assets:
         extra_stylesheets:
             - bundles/sonatatranslation/css/sonata-translation.css
+            - bundles/sonataadmin/css/tree.css
         extra_javascripts:
             - assets/sonata/script.js
+            - 'bundles/sonataadmin/treeview.js'
 #            - bundles/pixsortablebehavior/js/jquery-ui.min.js
 #            - bundles/pixsortablebehavior/js/init.js
 

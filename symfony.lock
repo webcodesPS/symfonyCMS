@@ -273,6 +273,9 @@
     "ralouphie/getallheaders": {
         "version": "3.0.3"
     },
+    "redcode/tree-bundle": {
+        "version": "0.1-alpha"
+    },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
         "recipe": {
