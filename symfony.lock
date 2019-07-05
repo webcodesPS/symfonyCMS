@@ -218,6 +218,9 @@
     "kriswallsmith/buzz": {
         "version": "v0.16.1"
     },
+    "mikeevstropov/sortable-tree-bundle": {
+        "version": "v1.1"
+    },
     "monolog/monolog": {
         "version": "1.24.0"
     },

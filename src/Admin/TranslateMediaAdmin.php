@@ -46,10 +46,16 @@ class TranslateMediaAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('media', null, array('label' => 'Media'))
             ->add('name', null, array('label' => 'Translate name'))
-            ->add('locale', null, array('label' => 'Locale'))
             ->add('description', 'html', array('label' => 'Translate description'))
+            ->add('locale', null, array('label' => 'Locale'))
+            ->add('media', null, array('label' => 'Media'))
+            ->add('_action', null, array(
+                'actions' => array(
+                    'edit' => array(),
+                    'delete' => array()
+                ),
+            ))
         ;
     }
 

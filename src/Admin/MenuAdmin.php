@@ -2,7 +2,6 @@
 
 namespace App\Admin;
 
-use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -25,17 +24,24 @@ class MenuAdmin extends AbstractTreeAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', null, [
-                    'label' => 'Name',
-                    'required' => true
-                ]
-            )
-            ->add('page', null, array('label' => 'Add page'))
-            ->add('enabled', null, [
-                'attr' => ['checked' => 'checked'],
-                'label' => 'Is menu enabled'
-            ]
-            )
+            ->tab('Menu')
+                ->with('General', array('class' => 'col-md-6'))
+                    ->add('name', null, [
+                            'label' => 'Name',
+                            'required' => true
+                        ]
+                    )
+                    ->add('parent', null, array('label' => 'Add parent'))
+                    ->add('enabled', null, [
+                        'attr' => ['checked' => 'checked'],
+                        'label' => 'Is menu enabled'
+                    ]
+                    )
+                ->end()
+                ->with('Owner page', array('class' => 'col-md-6'))
+                    ->add('page', null, array('label' => 'Add page'))
+                ->end()
+            ->end()
         ;
     }
 
@@ -64,5 +70,4 @@ class MenuAdmin extends AbstractTreeAdmin
             ))
         ;
     }
-
 }

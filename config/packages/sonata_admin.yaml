@@ -44,8 +44,8 @@ sonata_admin:
     title_logo: bundles/sonataadmin/logo_title.png
 
     templates:
-        edit: sonata/edit.html.twig
-        outer_list_rows_tree: sonata/list_outer_rows_tree.html.twig
+        edit: system/sonata/edit.html.twig
+        outer_list_rows_tree: system/sonata/list_outer_rows_tree.html.twig
 
     assets:
         extra_stylesheets:

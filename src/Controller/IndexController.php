@@ -3,10 +3,20 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class IndexController extends AbstractController
 {
+
+    private $params;
+    private $theme_dir;
+
+    public function __construct(ParameterBagInterface $params)
+    {
+        $this->params = $params;
+        $this->theme_dir = $this->params->get('theme_dir');
+    }
 
     /**
      * @param Request $request
@@ -14,7 +24,8 @@ class IndexController extends AbstractController
      */
     public function index()
     {
-        return $this->render('index/index.html.twig', [
+
+        return $this->render($this->theme_dir . '/index/index.html.twig', [
             'var' => 'Home page',
         ]);
     }
@@ -26,7 +37,7 @@ class IndexController extends AbstractController
      */
     public function page(Request $request, $page): object
     {
-        return $this->render('index/page.html.twig', [
+        return $this->render($this->theme_dir . '/index/page.html.twig', [
             'var' => 'Page',
         ]);
     }

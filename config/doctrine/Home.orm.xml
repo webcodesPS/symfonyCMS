@@ -23,7 +23,14 @@
             <gedmo:timestampable on="create"/>
         </field>
 
-        <one-to-many field="translates" target-entity="App\Entity\TranslateHome" mapped-by="home" />
+        <one-to-many field="translates" target-entity="App\Entity\TranslateHome" mapped-by="home" orphan-removal="true">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+            <order-by>
+                <order-by-field name="position" direction="ASC" />
+            </order-by>
+        </one-to-many>
 
         <many-to-many field="galleries" target-entity="App\Application\Sonata\MediaBundle\Entity\Gallery">
             <join-table name="home__gallery">

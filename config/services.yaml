@@ -4,9 +4,12 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    theme: '%env(resolve:THEME)%'
+    theme_dir: 'themes/%env(resolve:THEME)%'
     locale: en
     defaults:
         locale: pl
+        theme: default
     requirements:
         locale:  pl|en
     mailer_user: 'test@localhost.local'

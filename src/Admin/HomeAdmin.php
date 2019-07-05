@@ -20,12 +20,18 @@ class HomeAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', null, [
-                'label' => 'Name',
-                'required' => true
-                ]
-            )
-            ->add('galleries', null, ['label' => 'Add galleries'])
+            ->tab('Home page')
+                ->with('Edit name', ['class' => 'col-md-6'])
+                    ->add('name', null, [
+                        'label' => 'Name',
+                        'required' => true
+                        ]
+                    )
+                ->end()
+                ->with('Add galleries', ['class' => 'col-md-6'])
+                    ->add('galleries', null, ['label' => 'Galleries'])
+                ->end()
+            ->end()
         ;
     }
 
