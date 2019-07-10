@@ -28,11 +28,6 @@ class Home
         $this->galleries = new ArrayCollection();
     }
 
-    /**
-     * Represent object as string
-     *
-     * @return string
-     */
     public function __toString()
     {
         return $this->name ?: '';

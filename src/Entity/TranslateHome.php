@@ -16,11 +16,6 @@ class TranslateHome
 
     private $home;
 
-    /**
-     * Represent object as string
-     *
-     * @return string
-     */
     public function __toString()
     {
         return $this->name ?: '';
@@ -84,7 +79,7 @@ class TranslateHome
         return $this->home;
     }
 
-    public function setHome(?Home $home): self
+    public function setHome(\App\Entity\Home $home = null): self
     {
         $this->home = $home;
 
