@@ -23,7 +23,7 @@
             <gedmo:timestampable on="create"/>
         </field>
 
-        <one-to-many field="translates" target-entity="App\Entity\TranslateHome" mapped-by="home" orphan-removal="true">
+        <one-to-many field="translates" target-entity="App\Entity\TranslateHome" mapped-by="home" orphan-removal="true" >
             <cascade>
                 <cascade-all/>
             </cascade>

@@ -25,6 +25,7 @@ security:
                 use_forward:    false
                 check_path:     /admin/login_check
                 failure_path:   null
+                default_target_path: /admin/dashboard
             logout:
                 path:           /admin/logout
                 target:         /admin/login
@@ -71,9 +72,5 @@ security:
         SONATA:
             - ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT  # if you are using acl then this line must be commented
 
-
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
-
-#        acl:
-#            connection: default

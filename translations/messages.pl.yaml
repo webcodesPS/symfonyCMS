@@ -9,7 +9,7 @@ breadcrumb:
   link_translate_media_list: Content media list
   link_translate_home_create: Content home create
   link_translate_menu_create: Content menu create
-  link_data_list_list: Data list
+  link_data_list_list: Lista danych
 list:
   label_id: Id
   label__action: Action
@@ -17,6 +17,6 @@ list:
   label_enabled: Enabled
 form:
   label_translate: Tłumaczenie
-  label_translates: Translates
+  label_translates: Tłumaczenia
   label_enabled: is Enabled
   label_galleries: Gallery

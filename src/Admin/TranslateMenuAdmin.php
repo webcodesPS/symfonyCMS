@@ -15,7 +15,17 @@ class TranslateMenuAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('menu', null, array('label' => 'Add to menu'))
+            ->add('name', null, array('label' => 'Name'))
+            ->add('menu', null, ['label' => 'Add to menu',
+                'required'=>true,
+                'query_builder' => function($er) {
+                    $qb = $er->createQueryBuilder('m');
+                        $qb
+                            ->where('m.id != 1')
+                            ->orderBy('m.left', 'ASC');
+                    return $qb;
+                }
+            ])
             ->add('locale', ChoiceFieldMaskType::class, [
                 'label' => 'Locale',
                 'choices' => Helper::getLocaleList(),

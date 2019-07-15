@@ -75,7 +75,7 @@ class TranslateHomeAdminController extends CRUDController
             }
         }
 
-        return $this->renderWithExtraParams('sonata/edit.html.twig', [
+        return $this->renderWithExtraParams('system/sonata/edit.html.twig', [
             'action' => 'create',
             'form' => $form->createView(),
             'object' => $newObject,
@@ -160,7 +160,7 @@ class TranslateHomeAdminController extends CRUDController
             }
         }
 
-        return $this->renderWithExtraParams('sonata/edit.html.twig', [
+        return $this->renderWithExtraParams('system/sonata/edit.html.twig', [
             'action' => 'edit',
             'form' => $form->createView(),
             'object' => $existingObject,

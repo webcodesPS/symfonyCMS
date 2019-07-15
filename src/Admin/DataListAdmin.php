@@ -6,12 +6,11 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 
 
-class MenuAdmin extends AbstractAdmin
+class DataListAdmin extends AbstractAdmin
 {
     protected $datagridValues = [
         '_page' => 1,
@@ -28,12 +27,12 @@ class MenuAdmin extends AbstractAdmin
 
     public function createQuery($context = 'list')
     {
-        $em = $this->modelManager->getEntityManager('App\Entity\Menu');
+        $em = $this->modelManager->getEntityManager('App\Entity\DataList');
 
         $queryBuilder = $em
             ->createQueryBuilder('dl')
             ->select('dl')
-            ->from('App\Entity\Menu', 'dl')
+            ->from('App\Entity\DataList', 'dl')
             ->where('dl.parent IS NOT NULL');
 
         $query = new ProxyQuery($queryBuilder);
@@ -46,40 +45,26 @@ class MenuAdmin extends AbstractAdmin
         $id = $subject->getId();
 
         $formMapper
-            ->tab('Menu')
-                ->with('General', array('class' => 'col-md-4'))
-                    ->add('parent', null, ['label' => 'Parent',
-                        'required'=>true,
-                        'query_builder' => function($er) use ($id) {
-                            $qb = $er->createQueryBuilder('dl');
-                            if ($id) {
-                                $qb
-                                    ->where('dl.id <> :id')
-                                    ->setParameter('id', $id)
-                                    ->orderBy('dl.left', 'ASC');
-                            }
-                            return $qb;
+            ->with('Data list')
+                ->add('parent', null, ['label' => 'Parent',
+                'required'=>true,
+                'query_builder' => function($er) use ($id) {
+                    $qb = $er->createQueryBuilder('dl');
+                        if ($id) {
+                            $qb
+                                ->where('dl.id <> :id')
+                                ->setParameter('id', $id)
+                            ->orderBy('dl.left', 'ASC');
                         }
-                    ])
-                    ->add('name', null, [
-                            'label' => 'Name',
-                            'required' => true
-                        ]
-                    )
-                    ->add('enabled', null, [
+                        return $qb;
+                    }
+                ])
+                ->add('name', null, ['label' => 'Name'])
+                ->add('enabled', null, [
                         'attr' => ['checked' => 'checked'],
                         'label' => 'Is menu enabled'
                     ]
-                    )
-                ->end()
-                ->with('Content', array('class' => 'col-md-4'))
-                    ->add('translates', ModelType::class, [
-                        'multiple' => true,
-                    ])
-                ->end()
-                ->with('Owner page', array('class' => 'col-md-4'))
-                    ->add('page', null, array('label' => 'Add page'))
-                ->end()
+                )
             ->end()
         ;
     }
@@ -87,14 +72,14 @@ class MenuAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, array('label' => 'Name'))
-
+            ->add('name', null, ['label' => 'Name'])
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('id', null, ['sortable'=>false])
             ->add('up', 'text', [
                     'template' => 'system/sonata/field_tree_up.html.twig', 'label'=>' ',
                     'header_class' => 'list-col'

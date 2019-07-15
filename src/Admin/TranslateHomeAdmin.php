@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class TranslateHomeAdmin extends AbstractAdmin
 {
+
     protected $datagridValues = [
         '_page' => 1,
         '_sort_order' => 'ASC',
@@ -27,9 +28,6 @@ class TranslateHomeAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
-//        $pageArray = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager()->getRepository(TranslateHome::class)->findByExampleField(1);
-//        print_r($pageArray);
-
         $formMapper
             ->add('name', TextType::class, [
                     'attr' => ['class' => 'form-control'],
@@ -78,21 +76,5 @@ class TranslateHomeAdmin extends AbstractAdmin
             ))
         ;
     }
-
-//    public function preUpdate($object) {
-//        $uniqid = $this->getRequest()->query->get('uniqid');
-//        $data = $this->getRequest()->request->get($uniqid);
-//        $em = $this->modelManager->getEntityManager('App\Entity\Home');
-//        $query = $em->createQueryBuilder('h')
-//            ->select('h')
-//            ->from('App\Entity\Home', 'h')
-//            ->where('h.id = 1');
-//        $home = $query->getQuery()->getOneOrNullResult();
-//        $baseTranslateHome = new TranslateHome();
-//        $baseTranslateHome->setHome($home);
-//        $baseTranslateHome->setLocale($data['locale']);
-//        $baseTranslateHome->setName($data['name']);
-//        $baseTranslateHome->setTranslate($data['translate']);
-//        $em->persist($baseTranslateHome);
 
 }

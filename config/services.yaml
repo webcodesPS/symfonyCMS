@@ -67,8 +67,8 @@ services:
         arguments:
             - ~
             - App\Entity\Menu
-            - 'PixSortableBehaviorBundle:SortableAdmin'
-            - 'tree'
+            - App\Controller\Admin\MenuAdminController
+            - ~
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
@@ -81,6 +81,19 @@ services:
             - ~
             - App\Entity\Page
             - 'PixSortableBehaviorBundle:SortableAdmin'
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
+    app.admin.datalist:
+        class: App\Admin\DataListAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Data list" }
+        arguments:
+            - ~
+            - App\Entity\DataList
+            - App\Controller\Admin\DataListAdminController
+            - ~
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true

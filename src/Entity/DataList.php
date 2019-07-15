@@ -5,7 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-class Menu
+class DataList
 {
     private $laveled_title;
 
@@ -23,18 +23,13 @@ class Menu
 
     private $children;
 
-    private $translates;
-
     private $root;
 
     private $parent;
 
-    private $page;
-
     public function __construct()
     {
         $this->children = new ArrayCollection();
-        $this->translates = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -75,7 +70,7 @@ class Menu
         return $this->enabled;
     }
 
-    public function setEnabled(bool $enabled): self
+    public function setEnabled(?bool $enabled): self
     {
         $this->enabled = $enabled;
 
@@ -124,14 +119,14 @@ class Menu
     }
 
     /**
-     * @return Collection|Menu[]
+     * @return Collection|DataList[]
      */
     public function getChildren(): Collection
     {
         return $this->children;
     }
 
-    public function addChild(Menu $child): self
+    public function addChild(DataList $child): self
     {
         if (!$this->children->contains($child)) {
             $this->children[] = $child;
@@ -141,44 +136,13 @@ class Menu
         return $this;
     }
 
-    public function removeChild(Menu $child): self
+    public function removeChild(DataList $child): self
     {
         if ($this->children->contains($child)) {
             $this->children->removeElement($child);
             // set the owning side to null (unless already changed)
             if ($child->getParent() === $this) {
                 $child->setParent(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|TranslateMenu[]
-     */
-    public function getTranslates(): Collection
-    {
-        return $this->translates;
-    }
-
-    public function addTranslate(TranslateMenu $translate): self
-    {
-        if (!$this->translates->contains($translate)) {
-            $this->translates[] = $translate;
-            $translate->setMenu($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTranslate(TranslateMenu $translate): self
-    {
-        if ($this->translates->contains($translate)) {
-            $this->translates->removeElement($translate);
-            // set the owning side to null (unless already changed)
-            if ($translate->getMenu() === $this) {
-                $translate->setMenu(null);
             }
         }
 
@@ -205,18 +169,6 @@ class Menu
     public function setParent(?self $parent): self
     {
         $this->parent = $parent;
-
-        return $this;
-    }
-
-    public function getPage(): ?Page
-    {
-        return $this->page;
-    }
-
-    public function setPage(?Page $page): self
-    {
-        $this->page = $page;
 
         return $this;
     }

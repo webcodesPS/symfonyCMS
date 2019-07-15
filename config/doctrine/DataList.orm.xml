@@ -3,7 +3,7 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd"
                   xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
-    <entity repository-class="App\Repository\MenuRepository" name="App\Entity\Menu" table="menu">
+    <entity repository-class="App\Repository\DataListRepository" name="App\Entity\DataList" table="data_list">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
@@ -11,13 +11,13 @@
 
         <field name="laveled_title" type="string" column="laveled_title" length="64" nullable="true"/>
 
-        <field name="name" type="string" column="name" length="128" nullable="true"/>
+        <field name="name" type="string" column="name" length="64" nullable="true"/>
 
         <indexes>
             <index name="name_idx" columns="name"/>
         </indexes>
 
-        <field name="enabled" type="boolean" column="enabled"/>
+        <field name="enabled" type="boolean" column="enabled" nullable="true"/>
 
         <field name="left" column="lft" type="integer">
             <gedmo:tree-left/>
@@ -31,29 +31,23 @@
             <gedmo:tree-level/>
         </field>
 
-        <many-to-one field="root" target-entity="App\Entity\Menu">
+        <many-to-one field="root" target-entity="App\Entity\DataList">
             <join-column name="tree_root" referenced-column-name="id" on-delete="CASCADE"/>
             <gedmo:tree-root/>
         </many-to-one>
 
-        <many-to-one field="parent" target-entity="App\Entity\Menu" inversed-by="children">
+        <many-to-one field="parent" target-entity="App\Entity\DataList" inversed-by="children">
             <join-column name="parent_id" referenced-column-name="id" on-delete="CASCADE"/>
             <gedmo:tree-parent/>
         </many-to-one>
 
-        <one-to-many field="children" target-entity="App\Entity\Menu" mapped-by="parent">
+        <one-to-many field="children" target-entity="App\Entity\DataList" mapped-by="parent">
             <order-by>
                 <order-by-field name="left" direction="ASC" />
             </order-by>
         </one-to-many>
 
         <gedmo:tree type="nested"/>
-
-        <one-to-many field="translates" target-entity="App\Entity\TranslateMenu" mapped-by="menu" />
-
-        <many-to-one field="page" target-entity="App\Entity\Page" inversed-by="menus">
-            <join-column name="page_id" referenced-column-name="id" nullable="true" />
-        </many-to-one>
 
     </entity>
 </doctrine-mapping>

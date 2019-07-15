@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\Menu;
+use App\Entity\DataList;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 
-class MenuRepository extends ServiceEntityRepository
+class DataListRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Menu::class);
+        parent::__construct($registry, DataList::class);
     }
 
     public function moveUp($area)
     {
         $em = $this->_em;
-        $repositor = $em->getRepository('App\Entity\Menu');
+        $repositor = $em->getRepository('App\Entity\DataList');
         $area_upper = $repositor->findOneBy(['right'=>($area->getLeft()-1)]);
         if ($area_upper) {
             $del_1 = $area->getRight() - $area->getLeft();
@@ -41,7 +41,7 @@ class MenuRepository extends ServiceEntityRepository
     public function moveDown($area)
     {
         $em = $this->_em;
-        $repositor = $em->getRepository('App\Entity\Menu');
+        $repositor = $em->getRepository('App\Entity\DataList');
         $area_under = $repositor->findOneBy(['left'=>($area->getRight()+1)]);
         if ($area_under) {
             $del_1 = $area->getRight() - $area->getLeft();
@@ -64,12 +64,12 @@ class MenuRepository extends ServiceEntityRepository
 
     public function postOrderTraversal($tree, $begin, &$end, $em)
     {
-        $children = $em->getRepository('App\Entity\Menu')
+        $children = $em->getRepository('App\Entity\DataList')
             ->getChildren($tree->getId());
         $tree->setLeft($begin);
         $end = ++$begin;
         foreach ($children as $child) {
-            $repositor = $em->getRepository('App\Entity\Menu');
+            $repositor = $em->getRepository('App\Entity\DataList');
             $repositor->postOrderTraversal($child, $begin , $end, $em);
             $begin = ++$end;
         }
@@ -79,7 +79,7 @@ class MenuRepository extends ServiceEntityRepository
     public function getChildren($parent_id)
     {
         return $this->getEntityManager()
-            ->getRepository('App\Entity\Menu')
+            ->getRepository('App\Entity\DataList')
             ->createQueryBuilder('dl')
             ->where('dl.parent = :parentId')
             ->andWhere('dl.parent != dl.id')
