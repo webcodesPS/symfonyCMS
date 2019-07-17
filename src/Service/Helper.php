@@ -23,5 +23,4 @@ class Helper
             self::LOCALE_DE => 'de',
         ];
     }
-
 }

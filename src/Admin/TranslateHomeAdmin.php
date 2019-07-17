@@ -35,45 +35,45 @@ class TranslateHomeAdmin extends AbstractAdmin
                     'required' => true
                 ]
             )
-            ->add('home', null, array('label' => 'Add to home',
+            ->add('home', null, ['label' => 'Add to home',
             'class' => 'App\Entity\Home',
             'query_builder' =>
                 function($qb) {
                     return $qb->createQueryBuilder('h')->where('h.id = 1');
                 }
-            ))
+            ])
             ->add('locale', ChoiceFieldMaskType::class, [
                 'label' => 'Locale',
                 'choices' => Helper::getLocaleList(),
                 'required' => true
             ])
-            ->add('translate', TextareaType::class, array('attr' => array('class' => 'ckeditor')))
+            ->add('translate', TextareaType::class, ['attr' => ['class' => 'ckeditor']])
         ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, array('label' => 'Name'))
-            ->add('home', null, array('label' => 'Home'))
+            ->add('name', null, ['label' => 'Name'])
+            ->add('home', null, ['label' => 'Home'])
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', null, array('label' => 'Name'))
-            ->add('locale', null, array('label' => 'Locale'))
-            ->add('translate', 'html', array('label' => 'Translate'))
-            ->add('_action', null, array(
-                'actions' => array(
-                    'edit' => array(),
-                    'delete' => array(),
+            ->addIdentifier('name', null, ['label' => 'Name'])
+            ->add('locale', null, ['label' => 'Locale'])
+            ->add('translate', 'html', ['label' => 'Translate'])
+            ->add('_action', null, [
+                'actions' => [
+                    'edit' => [],
+                    'delete' => [],
                     'move' => [
                         'template' => '@PixSortableBehavior/Default/_sort.html.twig',
                     ]
-                ),
-            ))
+                ],
+            ])
         ;
     }
 

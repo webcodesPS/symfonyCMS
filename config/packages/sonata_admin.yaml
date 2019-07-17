@@ -41,8 +41,7 @@ sonata_admin:
     options:
         html5_validate: true
 
-
-    title_logo: bundles/sonataadmin/logo_cms.png
+    title_logo: assets/sonata/img/logo_cms.png
 
     templates:
         edit: system/sonata/edit.html.twig

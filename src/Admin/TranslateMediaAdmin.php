@@ -16,7 +16,7 @@ class TranslateMediaAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('media', null, array('label' => 'Add to media'))
+            ->add('media', null,['label' => 'Add to media'])
             ->add('locale', ChoiceFieldMaskType::class, [
                 'label' => 'Locale',
                 'choices' => Helper::getLocaleList(),
@@ -28,10 +28,10 @@ class TranslateMediaAdmin extends AbstractAdmin
                 ]
             )
             ->add('description', TextareaType::class,
-                array(
-                    'attr' => array('class' => 'ckeditor'),
+                [
+                    'attr' => ['class' => 'ckeditor'],
                     'label' => 'Translate description'
-                )
+                ]
             )
         ;
     }
@@ -39,23 +39,23 @@ class TranslateMediaAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('media', null, array('label' => 'Media'))
+            ->add('media', null, ['label' => 'Media'])
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name', null, array('label' => 'Translate name'))
-            ->add('description', 'html', array('label' => 'Translate description'))
-            ->add('locale', null, array('label' => 'Locale'))
-            ->add('media', null, array('label' => 'Media'))
-            ->add('_action', null, array(
-                'actions' => array(
-                    'edit' => array(),
-                    'delete' => array()
-                ),
-            ))
+            ->add('name', null, ['label' => 'Translate name'])
+            ->add('description', 'html', ['label' => 'Translate description'])
+            ->add('locale', null, ['label' => 'Locale'])
+            ->add('media', null, ['label' => 'Media'])
+            ->add('_action', null, [
+                'actions' => [
+                    'edit' => [],
+                    'delete' => []
+                ],
+            ])
         ;
     }
 

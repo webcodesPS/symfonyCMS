@@ -15,7 +15,7 @@ class TranslateMenuAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', null, array('label' => 'Name'))
+            ->add('name', null, ['label' => 'Name'])
             ->add('menu', null, ['label' => 'Add to menu',
                 'required'=>true,
                 'query_builder' => function($er) {
@@ -31,23 +31,23 @@ class TranslateMenuAdmin extends AbstractAdmin
                 'choices' => Helper::getLocaleList(),
                 'required' => true
             ])
-            ->add('translate', null, array('label' => 'Translate'))
+            ->add('translate', null, ['label' => 'Translate'])
         ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('menu', null, array('label' => 'Menu'))
+            ->add('menu', null, ['label' => 'Menu'])
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('menu', null, array('label' => 'Menu'))
-            ->add('locale', null, array('label' => 'Locale'))
-            ->add('translate', null, array('label' => 'Translate'))
+            ->addIdentifier('menu', null, ['label' => 'Menu'])
+            ->add('locale', null, ['label' => 'Locale'])
+            ->add('translate', null, ['label' => 'Translate'])
         ;
     }
 

@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 
 class MenuAdmin extends AbstractAdmin
@@ -47,7 +48,7 @@ class MenuAdmin extends AbstractAdmin
 
         $formMapper
             ->tab('Menu')
-                ->with('General', array('class' => 'col-md-4'))
+                ->with('General', ['class' => 'col-md-4'])
                     ->add('parent', null, ['label' => 'Parent',
                         'required'=>true,
                         'query_builder' => function($er) use ($id) {
@@ -66,19 +67,18 @@ class MenuAdmin extends AbstractAdmin
                             'required' => true
                         ]
                     )
-                    ->add('enabled', null, [
+                    ->add('enabled', CheckboxType::class, [
                         'attr' => ['checked' => 'checked'],
                         'label' => 'Is menu enabled'
-                    ]
-                    )
+                    ])
                 ->end()
-                ->with('Content', array('class' => 'col-md-4'))
+                ->with('Content', ['class' => 'col-md-4'])
                     ->add('translates', ModelType::class, [
                         'multiple' => true,
                     ])
                 ->end()
-                ->with('Owner page', array('class' => 'col-md-4'))
-                    ->add('page', null, array('label' => 'Add page'))
+                ->with('Owner page', ['class' => 'col-md-4'])
+                    ->add('page', null, ['label' => 'Add page'])
                 ->end()
             ->end()
         ;
@@ -87,7 +87,7 @@ class MenuAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, array('label' => 'Name'))
+            ->add('name', null, ['label' => 'Name'])
 
         ;
     }

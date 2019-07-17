@@ -42,48 +42,33 @@ class TranslatePageAdmin extends AbstractAdmin
                 'choices' => Helper::getLocaleList(),
                 'required' => true
             ])
-            ->add('translate', TextareaType::class, array('attr' => array('class' => 'ckeditor')))
+            ->add('translate', TextareaType::class, ['attr' => ['class' => 'ckeditor']])
         ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, array('label' => 'Name'))
+            ->add('name', null, ['label' => 'Name'])
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', null, array('label' => 'Name'))
-            ->add('locale', null, array('label' => 'Locale'))
-            ->add('translate', 'html', array('label' => 'Translate'))
-            ->add('_action', null, array(
-                'actions' => array(
-                    'edit' => array(),
-                    'delete' => array(),
+            ->addIdentifier('name', null, ['label' => 'Name'])
+            ->add('locale', null, ['label' => 'Locale'])
+            ->add('translate', 'html', ['label' => 'Translate'])
+            ->add('_action', null, [
+                'actions' => [
+                    'edit' => [],
+                    'delete' => [],
                     'move' => [
                         'template' => '@PixSortableBehavior/Default/_sort.html.twig',
                     ]
-                ),
-            ))
+                ],
+            ])
         ;
-    }
-
-    public function prePersist($object) {
-//        $uniqid = $this->getRequest()->query->get('uniqid');
-//        echo '<pre>';
-//        print_r($this->getRequest()->request->get($uniqid));
-//        echo '</pre>';
-//        die();
-    }
-
-    public function preUpdate($object) {
-//        echo '<pre>';
-//        print_r($this->getRequest()->attributes->all());
-//        echo '</pre>';
-//        die();
     }
 
 }
