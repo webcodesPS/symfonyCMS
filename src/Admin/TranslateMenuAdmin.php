@@ -48,6 +48,12 @@ class TranslateMenuAdmin extends AbstractAdmin
             ->addIdentifier('menu', null, ['label' => 'Menu'])
             ->add('locale', null, ['label' => 'Locale'])
             ->add('translate', null, ['label' => 'Translate'])
+            ->add('_action', null, [
+                'actions' => [
+                    'edit' => [],
+                    'delete' => [],
+                ],
+            ])
         ;
     }
 

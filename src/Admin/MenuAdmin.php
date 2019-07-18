@@ -108,6 +108,7 @@ class MenuAdmin extends AbstractAdmin
             ->addIdentifier('laveled_title', null,
                 ['sortable'=>false, 'label'=>'Laveled title'])
             ->add('enabled', null, ['editable' => true])
+            ->add('translates', null, ['label' => 'Translate title menu'])
             ->add('_action', 'actions', [
                 'actions' => [
                     'edit' => [],

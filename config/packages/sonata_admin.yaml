@@ -1,4 +1,10 @@
 sonata_admin:
+    security:
+        handler: sonata.admin.security.handler.role
+
+        role_admin: ROLE_ADMIN
+        role_super_admin: ROLE_SUPER_ADMIN
+
     title: 'Admin'
     dashboard:
         blocks:
@@ -51,12 +57,8 @@ sonata_admin:
         extra_stylesheets:
             - assets/sonata/style.css
             - bundles/sonatatranslation/css/sonata-translation.css
-            - bundles/sonataadmin/css/tree.css
         extra_javascripts:
             - assets/sonata/script.js
-            - 'bundles/sonataadmin/treeview.js'
-#            - bundles/pixsortablebehavior/js/jquery-ui.min.js
-#            - bundles/pixsortablebehavior/js/init.js
 
 sonata_doctrine_orm_admin:
     templates:

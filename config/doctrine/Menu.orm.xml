@@ -49,7 +49,14 @@
 
         <gedmo:tree type="nested"/>
 
-        <one-to-many field="translates" target-entity="App\Entity\TranslateMenu" mapped-by="menu" />
+        <one-to-many field="translates" target-entity="App\Entity\TranslateMenu" mapped-by="menu" orphan-removal="true" >
+            <cascade>
+                <cascade-all/>
+            </cascade>
+            <order-by>
+                <order-by-field name="id" direction="ASC" />
+            </order-by>
+        </one-to-many>
 
         <many-to-one field="page" target-entity="App\Entity\Page" inversed-by="menus">
             <join-column name="page_id" referenced-column-name="id" nullable="true" />

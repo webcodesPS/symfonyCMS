@@ -47,6 +47,10 @@ services:
     App\Service\Helper:
         public: true
 
+    App\EventListener\ExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
+
     # SONATA ADMIN DACHBOARD GROUPS
     app.admin.home:
         class: App\Admin\HomeAdmin

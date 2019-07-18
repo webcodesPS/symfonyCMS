@@ -18,36 +18,20 @@ security:
         # -> custom firewall for the admin area of the URL
         admin:
             pattern:            /admin(.*)
-            context:            user
+            context:            admin
             form_login:
                 provider:       fos_userbundle
-                login_path:     /admin/login
+                login_path:     sonata_user_admin_security_login
                 use_forward:    false
-                check_path:     /admin/login_check
-                failure_path:   null
-                default_target_path: /admin/dashboard
+                check_path:     sonata_user_admin_security_check
+                failure_path:   sonata_user_admin_security_login
+                default_target_path:   sonata_admin_dashboard
             logout:
-                path:           /admin/logout
-                target:         /admin/login
+                path:           sonata_user_admin_security_logout
+                target:         sonata_user_admin_security_login
             anonymous:          true
 
         # -> end custom configuration
-
-        # default login area for standard users
-
-        # This firewall is used to handle the public login area
-        # This part is handled by the FOS User Bundle
-        main:
-            pattern:             .*
-            context:             user
-            form_login:
-                provider:       fos_userbundle
-                login_path:     /login
-                use_forward:    false
-                check_path:     /login_check
-                failure_path:   null
-            logout:             true
-            anonymous:          true
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
