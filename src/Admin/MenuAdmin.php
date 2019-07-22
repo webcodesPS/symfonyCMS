@@ -6,9 +6,9 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
+use Sonata\Form\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 
@@ -43,12 +43,14 @@ class MenuAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $context = $this->getRequest()->get('context', null);
+
         $subject = $this->getSubject();
         $id = $subject->getId();
 
         $formMapper
             ->tab('Menu')
-                ->with('General', ['class' => 'col-md-4'])
+                ->with('General', ['class' => 'col-md-3'])
                     ->add('parent', null, ['label' => 'Parent',
                         'required'=>true,
                         'query_builder' => function($er) use ($id) {
@@ -67,18 +69,19 @@ class MenuAdmin extends AbstractAdmin
                             'required' => true
                         ]
                     )
+                    ->add('page', null, ['label' => 'Add page'])
                     ->add('enabled', CheckboxType::class, [
                         'attr' => ['checked' => 'checked'],
                         'label' => 'Is menu enabled'
                     ])
                 ->end()
-                ->with('Content', ['class' => 'col-md-4'])
-                    ->add('translates', ModelType::class, [
-                        'multiple' => true,
+                ->with('Translate', ['class' => 'col-md-9'])
+                    ->add('translates', CollectionType::class, ['by_reference' => true], [
+                        'edit' => 'inline',
+                        'inline' => 'table',
+                        'sortable' => 'position',
+                        'link_parameters' => ['context' => $context],
                     ])
-                ->end()
-                ->with('Owner page', ['class' => 'col-md-4'])
-                    ->add('page', null, ['label' => 'Add page'])
                 ->end()
             ->end()
         ;

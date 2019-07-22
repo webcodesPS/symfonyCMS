@@ -8,6 +8,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Form\Type\ModelType;
+
+
 class HomeAdmin extends AbstractAdmin
 {
 
@@ -19,8 +21,6 @@ class HomeAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $context = $this->getRequest()->get('context', null);
-
         $formMapper
             ->tab('Home page')
                 ->with('Edit name', ['class' => 'col-md-2'])

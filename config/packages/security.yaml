@@ -30,7 +30,6 @@ security:
                 path:           sonata_user_admin_security_logout
                 target:         sonata_user_admin_security_login
             anonymous:          true
-
         # -> end custom configuration
 
     # Easy way to control access for large sections of your site

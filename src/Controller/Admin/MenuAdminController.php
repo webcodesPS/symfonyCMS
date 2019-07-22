@@ -14,6 +14,7 @@ class MenuAdminController extends CRUDController
         if ($page->getParent()){
             $repo->moveUp($page);
         }
+
         return $this->redirect($this->getRequest()->headers->get('referer'));
     }
 
@@ -25,6 +26,7 @@ class MenuAdminController extends CRUDController
         if ($page->getParent()){
             $repo->moveDown($page);
         }
+
         return $this->redirect($this->getRequest()->headers->get('referer'));
     }
 }
