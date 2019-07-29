@@ -51,6 +51,13 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
 
+    gedmo.listener.sortable:
+        class: Gedmo\Sortable\SortableListener
+        calls:
+            - [setAnnotationReader, ['@annotation_reader']]
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+
     # SONATA ADMIN DACHBOARD GROUPS
     app.admin.home:
         class: App\Admin\HomeAdmin
@@ -64,6 +71,34 @@ services:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
 
+    app.admin.home.has.translate:
+        class: App\Admin\HomeHasTranslateAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Home has translate", show_in_dashboard: "false" }
+        arguments:
+            - ~
+            - App\Entity\HomeHasTranslate
+#            - 'PixSortableBehaviorBundle:SortableAdmin'
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
+    app.admin.translate.home:
+        class: App\Admin\TranslateHomeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Home" }
+        arguments:
+            - ~
+            - App\Entity\TranslateHome
+            # - App\Controller\Admin\TranslateHomeAdminController
+            - 'PixSortableBehaviorBundle:SortableAdmin'
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
+
+
     app.admin.menu:
         class: App\Admin\MenuAdmin
         tags:
@@ -72,31 +107,6 @@ services:
             - ~
             - App\Entity\Menu
             - App\Controller\Admin\MenuAdminController
-            - ~
-        calls:
-            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
-        public: true
-
-    app.admin.page:
-        class: App\Admin\PageAdmin
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Subpages" }
-        arguments:
-            - ~
-            - App\Entity\Page
-            - 'PixSortableBehaviorBundle:SortableAdmin'
-        calls:
-            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
-        public: true
-
-    app.admin.datalist:
-        class: App\Admin\DataListAdmin
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Data list" }
-        arguments:
-            - ~
-            - App\Entity\DataList
-            - App\Controller\Admin\DataListAdminController
             - ~
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
@@ -114,14 +124,15 @@ services:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
 
-    app.admin.translate.home:
-        class: App\Admin\TranslateHomeAdmin
+
+
+    app.admin.page:
+        class: App\Admin\PageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Home" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Subpages" }
         arguments:
             - ~
-            - App\Entity\TranslateHome
-#            - App\Controller\Admin\TranslateHomeAdminController
+            - App\Entity\Page
             - 'PixSortableBehaviorBundle:SortableAdmin'
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
@@ -139,6 +150,23 @@ services:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
 
+
+
+    app.admin.datalist:
+        class: App\Admin\DataListAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Data list" }
+        arguments:
+            - ~
+            - App\Entity\DataList
+            - App\Controller\Admin\DataListAdminController
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
+
+
     app.admin.translate.media:
         class: App\Admin\TranslateMediaAdmin
         tags:
@@ -150,4 +178,3 @@ services:
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
-

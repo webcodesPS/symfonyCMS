@@ -14,7 +14,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class TranslateHomeAdmin extends AbstractAdmin
 {
-
     protected $datagridValues = [
         '_page' => 1,
         '_sort_order' => 'ASC',
@@ -35,7 +34,7 @@ class TranslateHomeAdmin extends AbstractAdmin
                     'required' => true
                 ]
             )
-            ->add('home', null, ['label' => 'Add to home',
+            ->add('home', null, ['label' => 'Add to home page',
             'class' => 'App\Entity\Home',
             'query_builder' =>
                 function($qb) {
@@ -47,7 +46,10 @@ class TranslateHomeAdmin extends AbstractAdmin
                 'choices' => Helper::getLocaleList(),
                 'required' => true
             ])
-            ->add('translate', TextareaType::class, ['attr' => ['class' => 'ckeditor']])
+            ->add('translate', TextareaType::class, [
+                'label' => 'Content',
+                'attr' => ['class' => 'ckeditor']
+            ])
         ;
     }
 
@@ -64,7 +66,7 @@ class TranslateHomeAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('name', null, ['label' => 'Name'])
             ->add('locale', null, ['label' => 'Locale'])
-            ->add('translate', 'html', ['label' => 'Translate'])
+            ->add('translate', 'html', ['label' => 'Content'])
             ->add('_action', null, [
                 'actions' => [
                     'edit' => [],
@@ -77,4 +79,14 @@ class TranslateHomeAdmin extends AbstractAdmin
         ;
     }
 
+    public function preRemove($object) {
+        $this->modelManager->getEntityManager('App\Entity\HomeHasTranslate')
+            ->createQueryBuilder('hht')
+            ->from('App\Entity\HomeHasTranslate', 'hht')
+            ->where('hht.translate = '.$this->getRequest()->attributes->get('id'))
+            ->andWhere('hht.translate IS NOT NULL')
+            ->delete()
+            ->getQuery()
+            ->execute();
+    }
 }

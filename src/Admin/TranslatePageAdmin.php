@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelListType;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
@@ -13,7 +14,6 @@ use App\Service\Helper;
 
 class TranslatePageAdmin extends AbstractAdmin
 {
-
     protected $datagridValues = [
         '_page' => 1,
         '_sort_order' => 'ASC',
@@ -33,17 +33,24 @@ class TranslatePageAdmin extends AbstractAdmin
                     'required' => true
                 ]
             )
-            ->add('page', null, [
-                    'label' => 'Add to page'
-                ]
-            )
-            ->add('locale', ChoiceFieldMaskType::class, [
-                'label' => 'Locale',
-                'choices' => Helper::getLocaleList(),
-                'required' => true
-            ])
-            ->add('translate', TextareaType::class, ['attr' => ['class' => 'ckeditor']])
         ;
+
+        if (!$this->hasParentFieldDescription()) {
+            $formMapper->add('page', ModelListType::class, [
+                'required' => true
+            ]);
+        }
+
+        $formMapper
+            ->add('locale', ChoiceFieldMaskType::class, [
+                    'label' => 'Locale',
+                    'choices' => Helper::getLocaleList(),
+                    'required' => true
+                ])
+                ->add('translate', TextareaType::class, ['attr' => ['class' => 'ckeditor']])
+            ;
+
+
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -70,5 +77,4 @@ class TranslatePageAdmin extends AbstractAdmin
             ])
         ;
     }
-
 }

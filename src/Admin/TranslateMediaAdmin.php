@@ -12,7 +12,6 @@ use App\Service\Helper;
 
 class TranslateMediaAdmin extends AbstractAdmin
 {
-
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -58,5 +57,4 @@ class TranslateMediaAdmin extends AbstractAdmin
             ])
         ;
     }
-
 }

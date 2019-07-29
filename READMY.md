@@ -29,3 +29,5 @@ $ bin/console make:migration
 $ bin/console make:entity --regenerate App
 
 $ bin/console assets:install
+
+$ bin/console doctrine:cache:clear-metadat

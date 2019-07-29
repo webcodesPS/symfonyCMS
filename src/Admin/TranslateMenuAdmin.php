@@ -11,7 +11,6 @@ use App\Service\Helper;
 
 class TranslateMenuAdmin extends AbstractAdmin
 {
-
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -56,5 +55,4 @@ class TranslateMenuAdmin extends AbstractAdmin
             ])
         ;
     }
-
 }

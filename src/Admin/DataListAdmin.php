@@ -9,7 +9,6 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 
-
 class DataListAdmin extends AbstractAdmin
 {
     protected $datagridValues = [

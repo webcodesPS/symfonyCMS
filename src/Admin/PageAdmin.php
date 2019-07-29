@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 class PageAdmin extends AbstractAdmin
@@ -45,7 +46,10 @@ class PageAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('name', null, ['label' => 'Name'])
             ->add('slug', null, ['label' => 'Slug'])
-            ->add('translates', null, ['label' => 'Translate content'])
+//            ->add('translates', null, ['label' => 'Translate content'])
+            ->add('translates', ModelType::class, [
+                'multiple' => true,
+            ])
             ->add('_action', null, [
                 'actions' => [
                     'edit' => [],

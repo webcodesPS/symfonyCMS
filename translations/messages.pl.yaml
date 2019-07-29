@@ -20,3 +20,5 @@ form:
   label_translates: Tłumaczenia
   label_enabled: is Enabled
   label_galleries: Gallery
+  label_home_has_translates: Tłumaczenia dla strony głównej
+  label_position: Pozycja

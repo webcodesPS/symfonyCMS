@@ -22,6 +22,8 @@ class Home
 
     private $galleries;
 
+    protected $homeHasTranslates;
+
     public function __construct()
     {
         $this->translates = new ArrayCollection();
@@ -30,7 +32,7 @@ class Home
 
     public function __toString()
     {
-        return $this->name ?: '';
+        return $this->getName() ?: '-';
     }
 
     public function getName(): ?string
@@ -141,5 +143,64 @@ class Home
         }
 
         return $this;
+    }
+
+    public function setHomeHasTranslates($homeHasTranslates)
+    {
+        $this->homeHasTranslates = new ArrayCollection();
+
+        foreach ($homeHasTranslates as $homeHasTranslate) {
+            $this->addHomeHasTranslate($homeHasTranslate);
+        }
+    }
+
+    public function getHomeHasTranslates()
+    {
+        return $this->homeHasTranslates;
+    }
+
+    public function addHomeHasTranslate(HomeHasTranslate $homeHasTranslate)
+    {
+        $homeHasTranslate->setHome($this);
+
+        $this->homeHasTranslates[] = $homeHasTranslate;
+    }
+
+    public function removeHomeHasTranslate(HomeHasTranslate $homeHasTranslate)
+    {
+        $this->homeHasTranslates->removeElement($homeHasTranslate);
+    }
+
+    public function addHomeHasTranslates(HomeHasTranslate $homeHasTranslate)
+    {
+        @trigger_error(
+            'The '.__METHOD__.' is deprecated and will be removed with next major release.'
+            .'Use `addhomeHasTranslate` method instead.',
+            E_USER_DEPRECATED
+        );
+        $this->addHomeHasTranslate($homeHasTranslate);
+    }
+
+    public function reorderHomeHasTranslate()
+    {
+        if ($this->getHomeHasTranslates() && $this->getHomeHasTranslates() instanceof \IteratorAggregate) {
+            // reorder
+            $iterator = $this->getHomeHasTranslates()->getIterator();
+
+            $iterator->uasort(static function ($a, $b) {
+                if ($a->getPosition() === $b->getPosition()) {
+                    return 0;
+                }
+
+                return $a->getPosition() > $b->getPosition() ? 1 : -1;
+            });
+
+            $this->setHomeHasTranslates($iterator);
+        }
+    }
+
+    public function isHomeHasTranslate(): array
+    {
+        return [];
     }
 }

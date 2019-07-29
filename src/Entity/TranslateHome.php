@@ -18,7 +18,7 @@ class TranslateHome
 
     public function __toString()
     {
-        return $this->name ?: '';
+        return strtoupper($this->locale).' - '.$this->name ?: '';
     }
 
     public function getLocale(): ?string

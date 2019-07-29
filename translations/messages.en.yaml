@@ -20,3 +20,5 @@ form:
   label_translates: Translates
   label_enabled: is Enabled
   label_galleries: Gallery
+  label_home_has_translates: Home has translates
+  label_position: Position

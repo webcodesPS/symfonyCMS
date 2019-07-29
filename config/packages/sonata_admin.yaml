@@ -46,6 +46,7 @@ sonata_admin:
     search: true
     options:
         html5_validate: true
+        mosaic_background: '/path/to/image.png'
 
     title_logo: assets/sonata/img/logo_cms.png
 
