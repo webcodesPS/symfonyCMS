@@ -16,16 +16,6 @@ class TranslateMedia
 
     private $media;
 
-    /**
-     * Represent object as string
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->name ?: '';
-    }
-
     public function getLocale(): ?string
     {
         return $this->locale;

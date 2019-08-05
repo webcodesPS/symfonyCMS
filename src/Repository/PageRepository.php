@@ -20,27 +20,23 @@ class PageRepository extends ServiceEntityRepository
     }
 
     /**
-    * @return Page[] Returns an array of Page objects
-    */
-    public function findByExampleField($value)
+     * @return Page[] Returns an array of Page objects
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findPage($locale, $page = '')
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+        $qb = $this->createQueryBuilder('p');
+        $qb->select('p', 't');
+        if ($page) {
+            $qb->where('p.slug = :slug')
+                ->setParameter('slug', $page);
+        } else
+            $qb->where('p.id = 1');
 
-    public function findOneBySomeField($value): ?Page
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $qb->leftJoin('p.translates', 't')
+            ->andWhere('t.locale = :locale')
+            ->setParameter('locale', $locale);
+
+        return $qb->getQuery()->getOneOrNullResult();
     }
 }

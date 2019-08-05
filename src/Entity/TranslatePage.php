@@ -4,11 +4,6 @@ namespace App\Entity;
 
 class TranslatePage
 {
-    const LOCALE_EN = 'en';
-    const LOCALE_PL = 'pl';
-    const LOCALE_FR = 'fr';
-    const LOCALE_DE = 'de';
-
     private $locale;
 
     private $position;
@@ -21,29 +16,9 @@ class TranslatePage
 
     private $page;
 
-    /**
-     * Represent object as string
-     *
-     * @return string
-     */
     public function __toString()
     {
-        return $this->name ?: '';
-    }
-
-    /**
-     * Return frequency list
-     *
-     * @return array
-     */
-    public static function getLocaleList(): array
-    {
-        return [
-            self::LOCALE_PL => 'pl',
-            self::LOCALE_EN => 'en',
-            self::LOCALE_FR => 'fr',
-            self::LOCALE_DE => 'de',
-        ];
+        return strtoupper($this->locale).' - '.$this->name ?: '';
     }
 
     public function getLocale(): ?string

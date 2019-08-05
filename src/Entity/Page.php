@@ -33,14 +33,9 @@ class Page
         $this->galleries = new ArrayCollection();
     }
 
-    /**
-     * Represent object as string
-     *
-     * @return string
-     */
     public function __toString()
     {
-        return $this->name ?: '';
+        return $this->getName() ?: '-';
     }
 
     public function getName(): ?string
@@ -60,7 +55,7 @@ class Page
         return $this->slug;
     }
 
-    public function setSlug(?string $slug): self
+    public function setSlug(string $slug): self
     {
         $this->slug = $slug;
 

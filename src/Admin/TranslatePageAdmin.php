@@ -49,8 +49,6 @@ class TranslatePageAdmin extends AbstractAdmin
                 ])
                 ->add('translate', TextareaType::class, ['attr' => ['class' => 'ckeditor']])
             ;
-
-
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

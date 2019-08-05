@@ -53,7 +53,7 @@ class PageAdmin extends AbstractAdmin
             ->add('_action', null, [
                 'actions' => [
                     'edit' => [],
-                    'delete' => [],
+                    'delete' => ['template' => 'system/sonata/delete_page.html.twig'],
                     'move' => [
                         'template' => '@PixSortableBehavior/Default/_sort.html.twig',
                     ]

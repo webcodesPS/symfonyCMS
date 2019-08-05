@@ -10,23 +10,23 @@ sonata_admin:
         blocks:
             - { type: sonata.admin.block.admin_list, position: left }
         groups:
-            administration:
-                label: Website
-                icon: '<i class="fa fa-cogs" aria-hidden="true"></i>'
+            menu:
+                label: Navigate
+                icon: '<i class="fa fa-map-signs" aria-hidden="true"></i>'
                 items:
-                    - app.admin.home
                     - app.admin.menu
-                    - app.admin.page
-                    - app.admin.datalist
-                roles: [ ROLE_ADMIN ]
-            translation:
-                label: Contents
-                icon: '<i class="fa fa-random" aria-hidden="true"></i>'
-                items:
                     - app.admin.translate.menu
-                    - app.admin.translate.home
+            pages:
+                label: Pages
+                icon: '<i class="fa fa-newspaper-o" aria-hidden="true"></i>'
+                items:
+                    - app.admin.page
                     - app.admin.translate.page
-                    - app.admin.translate.media
+            datalist:
+                label: Data list
+                icon: '<i class="fa fa-list" aria-hidden="true"></i>'
+                items:
+                    - app.admin.datalist
                 roles: [ ROLE_ADMIN ]
             users:
                 label: Users
@@ -41,6 +41,7 @@ sonata_admin:
                 items:
                     - sonata.media.admin.media
                     - sonata.media.admin.gallery
+                    - app.admin.translate.media
                 roles: [ ROLE_ADMIN ]
 
     search: true

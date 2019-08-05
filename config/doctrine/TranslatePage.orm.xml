@@ -3,7 +3,7 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd"
                   xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
-    <entity repository-class="App\Repository\TranslatePageRepository" name="App\Entity\TranslatePage" table="translate__page">
+    <entity repository-class="App\Repository\TranslatePageRepository" name="App\Entity\TranslatePage" table="page__translate">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>

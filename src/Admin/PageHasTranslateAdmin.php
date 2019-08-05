@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Form\Type\ModelListType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
-class HomeHasTranslateAdmin extends AbstractAdmin
+class PageHasTranslateAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -36,16 +36,16 @@ class HomeHasTranslateAdmin extends AbstractAdmin
                 'attr' => ['checked' => 'checked'],
                 'label' => 'Is enabled'
             ])
-            ->add('position', HiddenType::class)
+//            ->add('position', HiddenType::class)
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('home')
+            ->add('page')
             ->add('translate')
-            ->add('position')
+//            ->add('position')
             ->add('enabled')
         ;
     }

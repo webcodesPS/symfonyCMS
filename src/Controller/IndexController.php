@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Page;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,12 +21,20 @@ class IndexController extends AbstractController
 
     /**
      * @param Request $request
-     * @return Response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $home = $this->getDoctrine()
+            ->getRepository(Page::class)
+            ->findPage($request->getLocale());
+
+        if(empty($home)) {
+            throw $this->createNotFoundException();
+        }
 
         return $this->render($this->theme_dir . '/index/index.html.twig', [
+            'home' => $home,
             'var' => 'Home page',
         ]);
     }
@@ -37,6 +46,14 @@ class IndexController extends AbstractController
      */
     public function page(Request $request, $page): object
     {
+        $page = $this->getDoctrine()
+            ->getRepository(Page::class)
+            ->findPage($request->getLocale(), $page);
+
+        if(empty($page)) {
+            throw $this->createNotFoundException();
+        }
+
         return $this->render($this->theme_dir . '/index/page.html.twig', [
             'var' => 'Page',
         ]);

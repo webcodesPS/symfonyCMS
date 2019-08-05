@@ -41,7 +41,7 @@ class Menu
     {
         $prefix = "";
         for ($i=2; $i<= $this->level; $i++) {
-            $prefix .= "      ";
+            $prefix .= "      ";
         }
         return $prefix . $this->name;
     }
@@ -50,11 +50,9 @@ class Menu
     {
         return (string)$this;
     }
-
     public function setLaveledTitle(?string $laveled_title): self
     {
         $this->laveled_title = $laveled_title;
-
         return $this;
     }
 

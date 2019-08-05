@@ -14,14 +14,9 @@ class TranslateMenu
 
     private $menu;
 
-    /**
-     * Represent object as string
-     *
-     * @return string
-     */
     public function __toString()
     {
-        return $this->name ?: '';
+        return $this->getName() ?: '-';
     }
 
     public function getName(): ?string

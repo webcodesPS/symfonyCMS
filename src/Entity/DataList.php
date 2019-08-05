@@ -32,18 +32,9 @@ class DataList
         $this->children = new ArrayCollection();
     }
 
-    public function __toString(): string
-    {
-        $prefix = "";
-        for ($i=2; $i<= $this->level; $i++) {
-            $prefix .= "      ";
-        }
-        return $prefix . $this->name;
-    }
-
     public function getLaveledTitle(): ?string
     {
-        return (string)$this;
+        return $this->laveled_title;
     }
 
     public function setLaveledTitle(?string $laveled_title): self

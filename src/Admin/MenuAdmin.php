@@ -69,7 +69,12 @@ class MenuAdmin extends AbstractAdmin
                             'required' => true
                         ]
                     )
-                    ->add('page', null, ['label' => 'Add page'])
+                    ->add('page', null, ['label' => 'Add page',
+                        'required'=> false,
+                        'query_builder' => function($p) {
+                            return $p->createQueryBuilder('p')->where('p.id != 1');
+                        }
+                    ])
                     ->add('enabled', CheckboxType::class, [
                         'attr' => ['checked' => 'checked'],
                         'label' => 'Is menu enabled'
