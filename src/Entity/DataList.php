@@ -32,6 +32,11 @@ class DataList
         $this->children = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getName() ?: '';
+    }
+
     public function getLaveledTitle(): ?string
     {
         return $this->laveled_title;

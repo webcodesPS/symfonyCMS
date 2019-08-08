@@ -48,14 +48,15 @@ class IndexController extends AbstractController
     {
         $page = $this->getDoctrine()
             ->getRepository(Page::class)
-            ->findPage($request->getLocale(), $page);
+            ->findPage($request->getLocale());
 
         if(empty($page)) {
             throw $this->createNotFoundException();
         }
 
         return $this->render($this->theme_dir . '/index/page.html.twig', [
-            'var' => 'Page',
+            'page' => $page,
+            'var' => 'Subpage',
         ]);
     }
 }

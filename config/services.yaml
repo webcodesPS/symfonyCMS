@@ -47,6 +47,9 @@ services:
     App\Service\Helper:
         public: true
 
+    App\Utils\:
+        resource: '../src/Utils'
+
     App\EventListener\ExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
@@ -74,7 +77,6 @@ services:
         public: true
 
 
-
     app.admin.menu:
         class: App\Admin\MenuAdmin
         tags:
@@ -99,7 +101,6 @@ services:
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
-
 
 
     app.admin.page:
@@ -140,7 +141,6 @@ services:
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
-
 
 
     app.admin.translate.media:

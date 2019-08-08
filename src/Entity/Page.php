@@ -35,7 +35,7 @@ class Page
 
     public function __toString()
     {
-        return $this->getName() ?: '-';
+        return $this->getName() ?: '';
     }
 
     public function getName(): ?string

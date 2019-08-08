@@ -6,6 +6,7 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Doctrine\Bundle\DoctrineBundle\Registry as Doctrine;
+use App\Entity\Menu;
 
 class AppExtension extends AbstractExtension
 {
@@ -36,10 +37,14 @@ class AppExtension extends AbstractExtension
     {
         $currentRequest = $this->requestStack->getCurrentRequest();
 
+        $menuRepo = $this->doctrine->getRepository(Menu::class)
+                        ->findMenu($currentRequest->get('_locale') ?: $currentRequest->getDefaultLocale());
+
         return [
-            $currentRequest->getDefaultLocale(),
-            $currentRequest->get('page'),
-            $currentRequest->get('_locale'),
+            'menu' => $menuRepo,
+            'default' => $currentRequest->getDefaultLocale(),
+            'page' => $currentRequest->get('page'),
+            '_locale' => $currentRequest->get('_locale'),
         ];
     }
 }
