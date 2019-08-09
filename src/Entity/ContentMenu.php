@@ -2,31 +2,31 @@
 
 namespace App\Entity;
 
-class TranslateMenu
+class ContentMenu
 {
-    private $name;
+    private $id;
+
+    private $title;
 
     private $locale;
 
-    private $translate;
-
-    private $id;
+    private $content;
 
     private $menu;
 
     public function __toString()
     {
-        return $this->getName() ?: '-';
+        return $this->getTitle() ?: '';
     }
 
-    public function getName(): ?string
+    public function getTitle(): ?string
     {
-        return $this->name;
+        return $this->title;
     }
 
-    public function setName(?string $name): self
+    public function setTitle(?string $title): self
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
@@ -43,14 +43,14 @@ class TranslateMenu
         return $this;
     }
 
-    public function getTranslate(): ?string
+    public function getContent(): ?string
     {
-        return $this->translate;
+        return $this->content;
     }
 
-    public function setTranslate(?string $translate): self
+    public function setContent(?string $content): self
     {
-        $this->translate = $translate;
+        $this->content = $content;
 
         return $this;
     }

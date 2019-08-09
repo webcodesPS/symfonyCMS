@@ -49,7 +49,7 @@
 
         <gedmo:tree type="nested"/>
 
-        <one-to-many field="translates" target-entity="App\Entity\TranslateMenu" mapped-by="menu" orphan-removal="true" >
+        <one-to-many field="contents" target-entity="App\Entity\ContentMenu" mapped-by="menu" orphan-removal="true" >
             <cascade>
                 <cascade-all/>
             </cascade>

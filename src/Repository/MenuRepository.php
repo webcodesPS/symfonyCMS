@@ -26,9 +26,9 @@ class MenuRepository extends ServiceEntityRepository
     public function findMenu($locale): array
     {
         return $this->createQueryBuilder('m')
-            ->select('m', 'p')
+            ->select('m', 'p', 't')
             ->leftJoin('m.page', 'p')
-            ->leftJoin('p.translates', 't')
+            ->leftJoin('m.contents', 't')
             ->andWhere('t.locale = :locale')
             ->setParameter('locale', $locale)
             ->getQuery()

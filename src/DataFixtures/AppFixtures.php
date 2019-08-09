@@ -3,20 +3,37 @@
 namespace App\DataFixtures;
 
 use App\Entity\Page;
+use App\Entity\TranslatePage;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Menu;
 use App\Entity\DataList;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
-
-class AppFixtures extends Fixture
+class AppFixtures extends Fixture implements FixtureInterface, ContainerAwareInterface
 {
+    private $container;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+
     public function load(ObjectManager $manager)
     {
         $page = new Page();
         $page->setName('Home page');
         $page->setSlug('Home page');
         $manager->persist($page);
+
+        $content = new TranslatePage();
+        $content->setPage($page);
+        $content->setLocale($this->container->getParameter('defaults')['locale']);
+        $content->setName('home page');
+        $content->setTranslate('Lorem ipsum dolor sit amet, consectetur adipiscing elit...');
+        $manager->persist($content);
 
         $menu = new Menu();
         $menu->setRoot($menu);

@@ -15,7 +15,7 @@ sonata_admin:
                 icon: '<i class="fa fa-map-signs" aria-hidden="true"></i>'
                 items:
                     - app.admin.menu
-                    - app.admin.translate.menu
+                    - app.admin.content.menu
             pages:
                 label: Pages
                 icon: '<i class="fa fa-newspaper-o" aria-hidden="true"></i>'

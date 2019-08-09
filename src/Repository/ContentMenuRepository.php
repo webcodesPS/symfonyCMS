@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\TranslateMenu;
+use App\Entity\ContentMenu;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method TranslateMenu|null find($id, $lockMode = null, $lockVersion = null)
- * @method TranslateMenu|null findOneBy(array $criteria, array $orderBy = null)
- * @method TranslateMenu[]    findAll()
- * @method TranslateMenu[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ContentMenu|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ContentMenu|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ContentMenu[]    findAll()
+ * @method ContentMenu[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TranslateMenuRepository extends ServiceEntityRepository
+class ContentMenuRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, TranslateMenu::class);
+        parent::__construct($registry, ContentMenu::class);
     }
 
     // /**

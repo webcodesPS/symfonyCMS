@@ -9,28 +9,21 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
 use App\Service\Helper;
 
-class TranslateMenuAdmin extends AbstractAdmin
+class ContentMenuAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', null, ['label' => 'Name'])
             ->add('menu', null, ['label' => 'Add to menu',
                 'required'=>true,
-                'query_builder' => function($er) {
-                    $qb = $er->createQueryBuilder('m');
-                        $qb
-                            ->where('m.id != 1')
-                            ->orderBy('m.left', 'ASC');
-                    return $qb;
-                }
             ])
             ->add('locale', ChoiceFieldMaskType::class, [
                 'label' => 'Locale',
                 'choices' => Helper::getLocaleList(),
                 'required' => true
             ])
-            ->add('translate', null, ['label' => 'Translate'])
+            ->add('content', null, ['label' => 'Content'])
+            ->add('title', null, ['label' => 'Title'])
         ;
     }
 
@@ -44,9 +37,9 @@ class TranslateMenuAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('menu', null, ['label' => 'Menu'])
+            ->addIdentifier('menu', null, ['label' => 'Title'])
             ->add('locale', null, ['label' => 'Locale'])
-            ->add('translate', null, ['label' => 'Translate'])
+            ->add('content', null, ['label' => 'Content'])
             ->add('_action', null, [
                 'actions' => [
                     'edit' => [],

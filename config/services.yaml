@@ -90,13 +90,13 @@ services:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
 
-    app.admin.translate.menu:
-        class: App\Admin\TranslateMenuAdmin
+    app.admin.content.menu:
+        class: App\Admin\ContentMenuAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Content" }
         arguments:
             - ~
-            - App\Entity\TranslateMenu
+            - App\Entity\ContentMenu
             - ~
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]

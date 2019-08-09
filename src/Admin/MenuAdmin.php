@@ -80,8 +80,8 @@ class MenuAdmin extends AbstractAdmin
                         'label' => 'Is menu enabled'
                     ])
                 ->end()
-                ->with('Translate', ['class' => 'col-md-9'])
-                    ->add('translates', CollectionType::class, ['by_reference' => true], [
+                ->with('Content', ['class' => 'col-md-9'])
+                    ->add('contents', CollectionType::class, ['by_reference' => true], [
                         'edit' => 'inline',
                         'inline' => 'table',
                         'sortable' => 'position',
@@ -113,10 +113,10 @@ class MenuAdmin extends AbstractAdmin
                     'header_class' => 'list-col'
                 ]
             )
-            ->addIdentifier('laveled_title', null,
-                ['sortable'=>false, 'label'=>'Laveled title'])
+            ->addIdentifier('name', null,
+                ['sortable'=>false, 'label'=>'Name'])
             ->add('enabled', null, ['editable' => true])
-            ->add('translates', null, ['label' => 'Translate title menu'])
+            ->add('contents', null, ['label' => 'Content menu'])
             ->add('_action', 'actions', [
                 'actions' => [
                     'edit' => [],

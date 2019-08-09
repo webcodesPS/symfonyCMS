@@ -23,7 +23,7 @@ class Menu
 
     private $children;
 
-    private $translates;
+    private $contents;
 
     private $root;
 
@@ -34,7 +34,7 @@ class Menu
     public function __construct()
     {
         $this->children = new ArrayCollection();
-        $this->translates = new ArrayCollection();
+        $this->contents = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -153,30 +153,30 @@ class Menu
     }
 
     /**
-     * @return Collection|TranslateMenu[]
+     * @return Collection|ContentMenu[]
      */
-    public function getTranslates(): Collection
+    public function getContents(): Collection
     {
-        return $this->translates;
+        return $this->contents;
     }
 
-    public function addTranslate(TranslateMenu $translate): self
+    public function addContent(ContentMenu $content): self
     {
-        if (!$this->translates->contains($translate)) {
-            $this->translates[] = $translate;
-            $translate->setMenu($this);
+        if (!$this->contents->contains($content)) {
+            $this->contents[] = $content;
+            $content->setMenu($this);
         }
 
         return $this;
     }
 
-    public function removeTranslate(TranslateMenu $translate): self
+    public function removeContent(ContentMenu $content): self
     {
-        if ($this->translates->contains($translate)) {
-            $this->translates->removeElement($translate);
+        if ($this->contents->contains($content)) {
+            $this->contents->removeElement($content);
             // set the owning side to null (unless already changed)
-            if ($translate->getMenu() === $this) {
-                $translate->setMenu(null);
+            if ($content->getMenu() === $this) {
+                $content->setMenu(null);
             }
         }
 
