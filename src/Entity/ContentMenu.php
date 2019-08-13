@@ -16,7 +16,7 @@ class ContentMenu
 
     public function __toString()
     {
-        return $this->getTitle() ?: '';
+        return $this->getTitle() .' - '.strtoupper($this->getLocale()) ?: '';
     }
 
     public function getTitle(): ?string

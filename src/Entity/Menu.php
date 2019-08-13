@@ -41,7 +41,7 @@ class Menu
     {
         $prefix = "";
         for ($i=2; $i<= $this->level; $i++) {
-            $prefix .= "      ";
+            $prefix .= "      ";
         }
         return $prefix . $this->name;
     }

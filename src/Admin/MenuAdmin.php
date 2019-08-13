@@ -113,7 +113,7 @@ class MenuAdmin extends AbstractAdmin
                     'header_class' => 'list-col'
                 ]
             )
-            ->addIdentifier('name', null,
+            ->addIdentifier('laveled_title', null,
                 ['sortable'=>false, 'label'=>'Name'])
             ->add('enabled', null, ['editable' => true])
             ->add('contents', null, ['label' => 'Content menu'])
