@@ -33,7 +33,7 @@ class PageRepository extends ServiceEntityRepository
         } else
             $qb->where('p.id = 1');
 
-        $qb->leftJoin('p.translates', 't')
+        $qb->leftJoin('p.contents', 't')
             ->andWhere('t.locale = :locale')
             ->setParameter('locale', $locale);
 

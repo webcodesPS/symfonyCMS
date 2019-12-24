@@ -3,24 +3,23 @@ breadcrumb:
   link_page_list: Page list
   link_menu_list: Link menu
   link_menu_create: Menu create
-  link_translate_home_list: Content home list
-  link_translate_page_list: Content page list
-  link_translate_menu_list: Content menu list
-  link_translate_media_list: Content media list
-  link_translate_home_create: Content home create
-  link_translate_menu_create: Content menu create
+  link_content_home_list: Content home list
+  link_content_page_list: Content page list
+  link_content_menu_list: Content menu list
+  link_content_media_list: Content media list
+  link_content_home_create: Content home create
+  link_content_menu_create: Content menu create
   link_data_list_list: Data list
 list:
   label_id: Id
   label__action: Action
-  label_translates: Translate content
+  label_contents: Translate content
   label_enabled: Enabled
 form:
-  label_translate: Tłumaczenie
-  label_translates: Translates
+  label_content: Content
+  label_contents: Content
   label_enabled: is Enabled
   label_galleries: Gallery
-  label_home_has_translates: Home has translates
+  label_home_has_contents: Home has contents
   label_position: Position
-  label_contents: Content
   label_page: Page

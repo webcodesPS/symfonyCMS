@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Application\Sonata\MediaBundle\Entity\Media;
 
-class TranslateMedia
+class ContentMedia
 {
     private $locale;
 

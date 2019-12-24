@@ -20,7 +20,7 @@ class ContentMenuRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return TranslateMenu[] Returns an array of TranslateMenu objects
+    //  * @return ContentMenu[] Returns an array of ContentMenu objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ContentMenuRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?TranslateMenu
+    public function findOneBySomeField($value): ?ContentMenu
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')

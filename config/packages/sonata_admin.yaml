@@ -21,7 +21,7 @@ sonata_admin:
                 icon: '<i class="fa fa-newspaper-o" aria-hidden="true"></i>'
                 items:
                     - app.admin.page
-                    - app.admin.translate.page
+                    - app.admin.content.page
             datalist:
                 label: Data list
                 icon: '<i class="fa fa-list" aria-hidden="true"></i>'
@@ -41,7 +41,7 @@ sonata_admin:
                 items:
                     - sonata.media.admin.media
                     - sonata.media.admin.gallery
-                    - app.admin.translate.media
+                    - app.admin.content.media
                 roles: [ ROLE_ADMIN ]
 
     search: true

@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-class TranslatePage
+class ContentPage
 {
     private $locale;
 
@@ -10,7 +10,7 @@ class TranslatePage
 
     private $name;
 
-    private $translate;
+    private $content;
 
     private $id;
 
@@ -57,14 +57,14 @@ class TranslatePage
         return $this;
     }
 
-    public function getTranslate(): ?string
+    public function getContent(): ?string
     {
-        return $this->translate;
+        return $this->content;
     }
 
-    public function setTranslate(?string $translate): self
+    public function setContent(?string $content): self
     {
-        $this->translate = $translate;
+        $this->content = $content;
 
         return $this;
     }

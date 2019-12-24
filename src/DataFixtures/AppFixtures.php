@@ -3,7 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Page;
-use App\Entity\TranslatePage;
+use App\Entity\ContentPage;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -28,11 +28,11 @@ class AppFixtures extends Fixture implements FixtureInterface, ContainerAwareInt
         $page->setSlug('Home page');
         $manager->persist($page);
 
-        $content = new TranslatePage();
+        $content = new ContentPage();
         $content->setPage($page);
         $content->setLocale($this->container->getParameter('defaults')['locale']);
         $content->setName('home page');
-        $content->setTranslate('Lorem ipsum dolor sit amet, consectetur adipiscing elit...');
+        $content->setContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit...');
         $manager->persist($content);
 
         $menu = new Menu();

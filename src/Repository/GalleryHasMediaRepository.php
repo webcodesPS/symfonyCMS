@@ -34,7 +34,7 @@ class GalleryHasMediaRepository extends ServiceEntityRepository
         $qb->select('ghm', 'g', 'm', 't');
         $qb->leftJoin('ghm.gallery', 'g');
         $qb->leftJoin('ghm.media', 'm');
-        $qb->leftJoin('m.translates', 't')
+        $qb->leftJoin('m.contents', 't')
             ->where('ghm.gallery IN(:ids)')
             ->andWhere('ghm.gallery IN(:ids)')
             ->andWhere('t.locale = :locale')

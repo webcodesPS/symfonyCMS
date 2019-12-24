@@ -22,14 +22,14 @@ class Page
 
     private $menus;
 
-    private $translates;
+    private $contents;
 
     private $galleries;
 
     public function __construct()
     {
         $this->menus = new ArrayCollection();
-        $this->translates = new ArrayCollection();
+        $this->contents = new ArrayCollection();
         $this->galleries = new ArrayCollection();
     }
 
@@ -135,30 +135,30 @@ class Page
     }
 
     /**
-     * @return Collection|TranslatePage[]
+     * @return Collection|ContentPage[]
      */
-    public function getTranslates(): Collection
+    public function getContents(): Collection
     {
-        return $this->translates;
+        return $this->contents;
     }
 
-    public function addTranslate(TranslatePage $translate): self
+    public function addContent(ContentPage $content): self
     {
-        if (!$this->translates->contains($translate)) {
-            $this->translates[] = $translate;
-            $translate->setPage($this);
+        if (!$this->contents->contains($content)) {
+            $this->contents[] = $content;
+            $content->setPage($this);
         }
 
         return $this;
     }
 
-    public function removeTranslate(TranslatePage $translate): self
+    public function removeContent(ContentPage $content): self
     {
-        if ($this->translates->contains($translate)) {
-            $this->translates->removeElement($translate);
+        if ($this->contents->contains($content)) {
+            $this->contents->removeElement($content);
             // set the owning side to null (unless already changed)
-            if ($translate->getPage() === $this) {
-                $translate->setPage(null);
+            if ($content->getPage() === $this) {
+                $content->setPage(null);
             }
         }
 

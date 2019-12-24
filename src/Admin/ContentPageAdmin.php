@@ -12,7 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
 use App\Service\Helper;
 
-class TranslatePageAdmin extends AbstractAdmin
+class ContentPageAdmin extends AbstractAdmin
 {
     protected $datagridValues = [
         '_page' => 1,
@@ -29,7 +29,7 @@ class TranslatePageAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('name', null, [
-                    'label' => 'Translate name',
+                    'label' => 'Content name',
                     'required' => true
                 ]
             )
@@ -47,7 +47,7 @@ class TranslatePageAdmin extends AbstractAdmin
                     'choices' => Helper::getLocaleList(),
                     'required' => true
                 ])
-                ->add('translate', TextareaType::class, ['attr' => ['class' => 'ckeditor']])
+                ->add('content', TextareaType::class, ['attr' => ['class' => 'ckeditor']])
             ;
     }
 
@@ -63,7 +63,7 @@ class TranslatePageAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('name', null, ['label' => 'Name'])
             ->add('locale', null, ['label' => 'Locale'])
-            ->add('translate', 'html', ['label' => 'Translate'])
+            ->add('content', 'html', ['label' => 'Content'])
             ->add('_action', null, [
                 'actions' => [
                     'edit' => [],

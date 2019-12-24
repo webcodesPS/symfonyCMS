@@ -10,7 +10,7 @@ use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use App\Service\Helper;
 
-class TranslateMediaAdmin extends AbstractAdmin
+class ContentMediaAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -22,14 +22,14 @@ class TranslateMediaAdmin extends AbstractAdmin
                 'required' => true
             ])
             ->add('name', null, [
-                    'label' => 'Translate name',
+                    'label' => 'Content name',
                     'required' => true
                 ]
             )
             ->add('description', TextareaType::class,
                 [
                     'attr' => ['class' => 'ckeditor'],
-                    'label' => 'Translate description'
+                    'label' => 'Content description'
                 ]
             )
         ;
@@ -45,8 +45,8 @@ class TranslateMediaAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name', null, ['label' => 'Translate name'])
-            ->add('description', 'html', ['label' => 'Translate description'])
+            ->add('name', null, ['label' => 'Content name'])
+            ->add('description', 'html', ['label' => 'Content description'])
             ->add('locale', null, ['label' => 'Locale'])
             ->add('media', null, ['label' => 'Media'])
             ->add('_action', null, [

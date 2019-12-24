@@ -2,6 +2,8 @@ sonata_user:
     security_acl: false
     manager_type: orm # can be orm or mongodb
 #  mailer: custom.mailer.service.id
+    table:
+        user_group: "user__user_group"
     class:
         user: App\Application\Sonata\UserBundle\Entity\User
         group: App\Application\Sonata\UserBundle\Entity\Group

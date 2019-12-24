@@ -63,13 +63,13 @@ services:
 
     # SONATA ADMIN DACHBOARD GROUPS
 
-    app.admin.page.has.translate:
-        class: App\Admin\PageHasTranslateAdmin
+    app.admin.page.has.content:
+        class: App\Admin\PageHasContentAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Page has translate", show_in_dashboard: "false" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Page has content", show_in_dashboard: "false" }
         arguments:
             - ~
-            - App\Entity\PageHasTranslate
+            - App\Entity\PageHasContent
 #            - 'PixSortableBehaviorBundle:SortableAdmin'
             - ~
         calls:
@@ -115,14 +115,14 @@ services:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
 
-    app.admin.translate.page:
-        class: App\Admin\TranslatePageAdmin
+    app.admin.content.page:
+        class: App\Admin\ContentPageAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Contents" }
         arguments:
             - ~
-            - App\Entity\TranslatePage
-            # - App\Controller\Admin\TranslatePageAdminController
+            - App\Entity\ContentPage
+            # - App\Controller\Admin\ContentPageAdminController
             - 'PixSortableBehaviorBundle:SortableAdmin'
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
@@ -143,13 +143,13 @@ services:
         public: true
 
 
-    app.admin.translate.media:
-        class: App\Admin\TranslateMediaAdmin
+    app.admin.content.media:
+        class: App\Admin\ContentMediaAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Media" }
         arguments:
             - ~
-            - App\Entity\TranslateMedia
+            - App\Entity\ContentMedia
             - ~
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]

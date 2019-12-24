@@ -2,7 +2,7 @@
 
 namespace App\Application\Sonata\MediaBundle\Entity;
 
-use App\Entity\TranslateMedia;
+use App\Entity\ContentMedia;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sonata\MediaBundle\Entity\BaseMedia as BaseMedia;
@@ -23,13 +23,13 @@ class Media extends BaseMedia
     protected $id;
 
     /**
-     * @var \App\Entity\TranslateMedia
+     * @var \App\Entity\ContentMedia
      */
-    private $translates;
+    private $contents;
 
     public function __construct()
     {
-        $this->translates = new ArrayCollection();
+        $this->contents = new ArrayCollection();
     }
 
     /**
@@ -43,53 +43,53 @@ class Media extends BaseMedia
     }
 
     /**
-     * Set translate
+     * Set content
      *
-     * @param array $translates
-     * @return Translates
+     * @param array $contents
+     * @return Contents
      */
-    public function setTranslate($translates)
+    public function setContent($contents)
     {
-        $this->translates = $translates;
+        $this->contents = $contents;
 
         return $this;
     }
 
     /**
-     * Get translates
+     * Get contents
      *
      * @return string
      */
-    public function getTranslate()
+    public function getContent()
     {
-        return $this->translates;
+        return $this->contents;
     }
 
     /**
-     * @return Collection|TranslateMedia[]
+     * @return Collection|ContentMedia[]
      */
-    public function getTranslates(): Collection
+    public function getContents(): Collection
     {
-        return $this->translates;
+        return $this->contents;
     }
 
-    public function addTranslate(TranslateMedia $translate): self
+    public function addContent(ContentMedia $content): self
     {
-        if (!$this->translates->contains($translate)) {
-            $this->translates[] = $translate;
-            $translate->setMedia($this);
+        if (!$this->contents->contains($content)) {
+            $this->contents[] = $content;
+            $content->setMedia($this);
         }
 
         return $this;
     }
 
-    public function removeTranslate(TranslateMedia $translate): self
+    public function removeContent(ContentMedia $content): self
     {
-        if ($this->translates->contains($translate)) {
-            $this->translates->removeElement($translate);
+        if ($this->contents->contains($content)) {
+            $this->contents->removeElement($content);
             // set the owning side to null (unless already changed)
-            if ($translate->getMedia() === $this) {
-                $translate->setMedia(null);
+            if ($content->getMedia() === $this) {
+                $content->setMedia(null);
             }
         }
 
