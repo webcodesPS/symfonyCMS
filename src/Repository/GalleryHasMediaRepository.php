@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\RequestStack;
 use App\Application\Sonata\MediaBundle\Entity\GalleryHasMedia;
 
@@ -15,7 +15,7 @@ class GalleryHasMediaRepository extends ServiceEntityRepository
      */
     private $requestStack;
 
-    public function __construct(RegistryInterface $registry, RequestStack $requestStack)
+    public function __construct(ManagerRegistry $registry, RequestStack $requestStack)
     {
         $this->requestStack = $requestStack;
 

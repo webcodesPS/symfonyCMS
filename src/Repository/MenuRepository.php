@@ -5,14 +5,14 @@ namespace App\Repository;
 use App\Entity\Menu;
 use App\Utils\SortableTree;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Common\Persistence\ManagerRegistry;
 
 
 class MenuRepository extends ServiceEntityRepository
 {
     protected $sortableTree;
 
-    public function __construct(RegistryInterface $registry, SortableTree $sortableTree)
+    public function __construct(ManagerRegistry $registry, SortableTree $sortableTree)
     {
         $this->sortableTree = $sortableTree;
 
