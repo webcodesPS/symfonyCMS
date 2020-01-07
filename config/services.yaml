@@ -154,3 +154,40 @@ services:
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
+
+
+    app.admin.application.category:
+        class: App\Admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Categorys" }
+        arguments:
+            - ~
+            - App\Entity\Category
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
+    app.admin.application.collection:
+        class: App\Admin\CollectionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Collections" }
+        arguments:
+            - ~
+            - App\Entity\Collection
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
+    app.admin.application.element:
+        class: App\Admin\ElementAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Elements" }
+        arguments:
+            - ~
+            - App\Entity\Element
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true

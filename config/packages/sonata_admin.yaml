@@ -43,6 +43,15 @@ sonata_admin:
                     - sonata.media.admin.gallery
                     - app.admin.content.media
                 roles: [ ROLE_ADMIN ]
+            application:
+                label: Administration
+                icon: '<i class="fa fa-picture-o" aria-hidden="true"></i>'
+                items:
+                    - app.admin.application.category
+                    - app.admin.application.collection
+                    - app.admin.application.element
+                roles: [ ROLE_ADMIN ]
+
 
     search: true
     options:
