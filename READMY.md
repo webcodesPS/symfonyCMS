@@ -1,6 +1,8 @@
 # Symfony4
 $ bin/console about
 
+$ bin/console server:run
+
 $ bin/console server:start 0.0.0.0:8000
 
 $ bin/console debug:router
@@ -14,6 +16,8 @@ $ bin/console doctrine:fixtures:load --append
 $ bin/console fos:user:create --super-admin
 
 $ bin/console doctrine:schema:[create|update]
+
+$ php bin/console assets
 
 $ bin/console debug:translation fr
 
