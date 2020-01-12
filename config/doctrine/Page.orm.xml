@@ -6,12 +6,14 @@
     <entity repository-class="App\Repository\PageRepository" name="App\Entity\Page" table="page">
 
         <id name="id" type="integer" column="id">
-            <generator strategy="AUTO"/>
+            <generator/>
         </id>
 
-        <field name="name" type="string" column="name" length="128" nullable="false"/>
+        <field name="name" column="name" length="128"/>
 
-        <field name="slug" type="string" column="slug" length="128" nullable="false" unique="true">
+        <field name="enabled" type="boolean" column="enabled"/>
+
+        <field name="slug" column="slug" length="128" unique="true">
             <gedmo:slug unique="true" style="default" updatable="true" separator="-" fields="name" />
         </field>
 
@@ -34,10 +36,10 @@
         <many-to-many field="galleries" target-entity="App\Application\Sonata\MediaBundle\Entity\Gallery">
             <join-table name="page__gallery">
                 <join-columns>
-                    <join-column name="page_id" referenced-column-name="id" />
+                    <join-column name="page_id"/>
                 </join-columns>
                 <inverse-join-columns>
-                    <join-column name="gallery_id" referenced-column-name="id" />
+                    <join-column name="gallery_id"/>
                 </inverse-join-columns>
             </join-table>
         </many-to-many>

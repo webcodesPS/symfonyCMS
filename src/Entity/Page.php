@@ -12,6 +12,8 @@ class Page
 
     private $slug;
 
+    private $enabled;
+
     private $updatedAt;
 
     private $createdAt;
@@ -60,6 +62,18 @@ class Page
         $this->slug = $slug;
 
         return $this;
+    }
+
+    public function getEnabled(): ?bool
+    {
+      return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): self
+    {
+      $this->enabled = $enabled;
+
+      return $this;
     }
 
     public function getUpdatedAt(): ?\DateTimeInterface

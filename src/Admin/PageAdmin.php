@@ -45,6 +45,7 @@ class PageAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('name', null, ['label' => 'Name'])
+            ->add('enabled', null, ['editable' => true])
             ->add('slug', null, ['label' => 'Slug'])
             ->add('contents', ModelType::class, [
                 'multiple' => true,

@@ -82,13 +82,13 @@ class MenuAdmin extends AbstractAdmin
                 ->end()
                 ->with('Content', ['class' => 'col-md-9'])
                     ->add('contents', CollectionType::class, ['by_reference' => true], [
-                        'edit' => 'inline',
-                        'inline' => 'table',
-                        'sortable' => 'position',
-                        'link_parameters' => ['context' => $context],
+                      'edit' => 'inline',
+                      'inline' => 'table',
+                      'sortable' => 'position',
+                      'link_parameters' => ['context' => $context],
                     ])
-                ->end()
-            ->end()
+                    ->end()
+                ->end();
         ;
     }
 
@@ -117,6 +117,7 @@ class MenuAdmin extends AbstractAdmin
                 ['sortable'=>false, 'label'=>'Name'])
             ->add('enabled', null, ['editable' => true])
             ->add('contents', null, ['label' => 'Content menu'])
+            ->add('page', null, ['label' => 'Page'])
             ->add('_action', 'actions', [
                 'actions' => [
                     'edit' => [],

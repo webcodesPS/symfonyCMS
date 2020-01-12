@@ -11,6 +11,14 @@ use App\Service\Helper;
 
 class ContentMenuAdmin extends AbstractAdmin
 {
+    public function createQuery($context = 'list')
+    {
+      $proxyQuery = parent::createQuery('list');
+      $proxyQuery->addOrderBy($proxyQuery->getRootAlias().'.locale', 'ASC');
+
+      return $proxyQuery;
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -40,7 +48,7 @@ class ContentMenuAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('menu', null, ['label' => 'Title'])
+            ->addIdentifier('menu', null, ['label' => 'Menu'])
             ->add('locale', null, ['label' => 'Locale'])
             ->add('content', null, ['label' => 'Content'])
             ->add('_action', null, [
