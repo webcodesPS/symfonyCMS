@@ -13,6 +13,7 @@ parameters:
     requirements:
         locale:  pl|en
     mailer_user: 'test@localhost.local'
+    sonata.media.admin.media.class: App\Application\Sonata\MediaBundle\Admin\ORM\MediaAdmin
 
 services:
     # default configuration for services in *this* file
@@ -77,7 +78,7 @@ services:
         public: true
 
 
-    app.admin.menu:
+    cms.admin.menu:
         class: App\Admin\MenuAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Menu" }
@@ -90,7 +91,7 @@ services:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
 
-    app.admin.content.menu:
+    cms.admin.content.menu:
         class: App\Admin\ContentMenuAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Content" }
@@ -103,7 +104,7 @@ services:
         public: true
 
 
-    app.admin.page:
+    cms.admin.page:
         class: App\Admin\PageAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Pages" }
@@ -115,7 +116,7 @@ services:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
 
-    app.admin.content.page:
+    cms.admin.content.page:
         class: App\Admin\ContentPageAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Contents" }
@@ -129,7 +130,7 @@ services:
         public: true
 
 
-    app.admin.datalist:
+    cms.admin.datalist:
         class: App\Admin\DataListAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Data list" }
@@ -142,15 +143,15 @@ services:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
 
-
-    app.admin.content.media:
-        class: App\Admin\ContentMediaAdmin
+    cms.admin.media:
+        class: "%sonata.media.admin.media.class%"
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Media" }
         arguments:
             - ~
-            - App\Entity\ContentMedia
-            - ~
+            - App\Application\Sonata\MediaBundle\Entity\Media
+            - App\Application\Sonata\MediaBundle\Admin\ORM\MediaAdmin
+            - "@sonata.media.pool"
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
@@ -159,7 +160,7 @@ services:
     app.admin.application.category:
         class: App\Admin\CategoryAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Categorys" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Categories" }
         arguments:
             - ~
             - App\Entity\Category
@@ -187,6 +188,18 @@ services:
         arguments:
             - ~
             - App\Entity\Element
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
+    app.admin.application.element.content:
+        class: App\Admin\ContentElementAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Element content" }
+        arguments:
+            - ~
+            - App\Entity\ContentElement
             - ~
         calls:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]

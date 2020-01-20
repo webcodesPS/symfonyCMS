@@ -1,3 +1,9 @@
+media:
+    path:      /media/image/{format}/{id}
+    controller: App\Controller\MediaController::image
+    requirements:
+        format: small|big|hq
+
 app_index_index:
     path: /{_locale}
     controller: App\Controller\IndexController::index

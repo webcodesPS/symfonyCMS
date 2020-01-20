@@ -14,19 +14,19 @@ sonata_admin:
                 label: Navigate
                 icon: '<i class="fa fa-map-signs" aria-hidden="true"></i>'
                 items:
-                    - app.admin.menu
-                    - app.admin.content.menu
+                    - cms.admin.menu
+                    - cms.admin.content.menu
             pages:
                 label: Pages
                 icon: '<i class="fa fa-newspaper-o" aria-hidden="true"></i>'
                 items:
-                    - app.admin.page
-                    - app.admin.content.page
+                    - cms.admin.page
+                    - cms.admin.content.page
             datalist:
                 label: Data list
                 icon: '<i class="fa fa-list" aria-hidden="true"></i>'
                 items:
-                    - app.admin.datalist
+                    - cms.admin.datalist
                 roles: [ ROLE_ADMIN ]
             users:
                 label: Users
@@ -39,9 +39,9 @@ sonata_admin:
                 label: Media
                 icon: '<i class="fa fa-picture-o" aria-hidden="true"></i>'
                 items:
-                    - sonata.media.admin.media
+                    - cms.admin.media
+#                    - sonata.media.admin.media
                     - sonata.media.admin.gallery
-                    - app.admin.content.media
                 roles: [ ROLE_ADMIN ]
             application:
                 label: Administration
@@ -50,6 +50,7 @@ sonata_admin:
                     - app.admin.application.category
                     - app.admin.application.collection
                     - app.admin.application.element
+                    - app.admin.application.element.content
                 roles: [ ROLE_ADMIN ]
 
 

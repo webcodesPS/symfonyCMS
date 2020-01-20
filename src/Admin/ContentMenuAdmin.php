@@ -22,7 +22,7 @@ class ContentMenuAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('menu', null, ['label' => 'Add to men',
+            ->add('menu', null, ['label' => 'Add to menu',
                 'required'=>true,
                 'query_builder' => function($er) {
                     return $er->createQueryBuilder('m')->orderBy('m.left', 'ASC');

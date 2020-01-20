@@ -27,6 +27,8 @@ class Media extends BaseMedia
      */
     private $contents;
 
+    private $publicUrl;
+
     public function __construct()
     {
         $this->contents = new ArrayCollection();

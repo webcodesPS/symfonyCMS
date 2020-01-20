@@ -23,3 +23,4 @@ $ php bin/console make:migration
 $ php bin/console make:entity --regenerate App
 $ php bin/console assets:install
 $ php bin/console doctrine:cache:clear-metadat
+$ php bin/console debug:container sonata.media.manager.media
