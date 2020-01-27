@@ -6,20 +6,20 @@
     <entity repository-class="App\Repository\ContentPageRepository" name="App\Entity\ContentPage" table="page__content">
 
         <id name="id" type="integer" column="id">
-            <generator strategy="AUTO"/>
+            <generator/>
         </id>
 
         <many-to-one field="page" target-entity="App\Entity\Page" inversed-by="contents">
-            <join-column name="page_id" referenced-column-name="id" nullable="true" />
+            <join-column name="page_id" referenced-column-name="id"/>
         </many-to-one>
 
-        <field name="locale" type="string" column="locale" length="2" nullable="true"/>
+        <field name="locale" column="locale" length="2" nullable="true"/>
 
         <field name="position" type="integer" nullable="true">
             <gedmo:sortable-position/>
         </field>
 
-        <field name="name" type="string" column="name" length="64" nullable="true"/>
+        <field name="name" column="name" length="64" nullable="true"/>
 
         <field name="content" type="text" column="content" nullable="true"/>
 

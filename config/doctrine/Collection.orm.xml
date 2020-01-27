@@ -28,7 +28,5 @@
       <join-column name="media_id"/>
     </many-to-one>
 
-    <field name="description" type="text" column="description" nullable="true"/>
-
   </entity>
 </doctrine-mapping>

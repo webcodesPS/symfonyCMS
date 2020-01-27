@@ -181,6 +181,18 @@ services:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
 
+    app.admin.application.collection.content:
+        class: App\Admin\ContentCollectionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Collection content" }
+        arguments:
+            - ~
+            - App\Entity\ContentCollection
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+        public: true
+
     app.admin.application.element:
         class: App\Admin\ElementAdmin
         tags:

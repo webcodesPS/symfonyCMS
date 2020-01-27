@@ -50,7 +50,6 @@ class CollectionAdmin extends AbstractAdmin
             ->add('name')
             ->add('category')
             ->add('elements')
-            ->add('description', TextareaType::class, ['attr' => ['class' => 'ckeditor']])
             ->add('media', ModelListType::class, [
               'required' => true
             ])

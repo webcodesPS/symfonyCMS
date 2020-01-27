@@ -49,6 +49,7 @@ sonata_admin:
                 items:
                     - app.admin.application.category
                     - app.admin.application.collection
+                    - app.admin.application.collection.content
                     - app.admin.application.element
                     - app.admin.application.element.content
                 roles: [ ROLE_ADMIN ]

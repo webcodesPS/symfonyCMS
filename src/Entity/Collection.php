@@ -7,93 +7,79 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 class Collection
 {
-  private $id;
+    private $id;
 
-  public function getId()
-  {
-    return $this->id;
-  }
+    private $name;
 
-  private $name;
+    private $elements;
 
-  private $elements;
+    private $category;
 
-  private $category;
+    private $media;
 
-  private $media;
+    public function __toString()
+    {
+       return $this->name ?: '';
+    }
 
-  private $description;
+    public function __construct()
+    {
+       $this->elements = new ArrayCollection();
+    }
 
-  public function __toString()
-  {
-    return $this->name ?: '';
-  }
+    public function getId()
+    {
+      return $this->id;
+    }
 
-  public function __construct()
-  {
-    $this->elements = new ArrayCollection();
-  }
+    public function setName($name)
+    {
+        $this->name = $name;
 
-  public function setName($name)
-  {
-    $this->name = $name;
+        return $this;
+    }
 
-    return $this;
-  }
+    public function getName()
+    {
+        return $this->name;
+    }
 
-  public function getName()
-  {
-    return $this->name;
-  }
+    public function addElement(Element $elements)
+    {
+        $this->elements[] = $elements;
 
-  public function addElement(Element $elements)
-  {
-    $this->elements[] = $elements;
+        return $this;
+    }
 
-    return $this;
-  }
+    public function removeElement(Element $elements)
+    {
+       $this->elements->removeElement($elements);
+    }
 
-  public function removeElement(Element $elements)
-  {
-    $this->elements->removeElement($elements);
-  }
+    public function getElements()
+    {
+       return $this->elements;
+    }
 
-  public function getElements()
-  {
-    return $this->elements;
-  }
+    public function setCategory(Category $category = null)
+    {
+        $this->category = $category;
 
-  public function setCategory(Category $category = null)
-  {
-    $this->category = $category;
+        return $this;
+    }
 
-    return $this;
-  }
+    public function getCategory()
+    {
+        return $this->category;
+    }
 
-  public function getCategory()
-  {
-    return $this->category;
-  }
+    public function getMedia()
+    {
+        return $this->media;
+    }
 
-  public function getMedia()
-  {
-    return $this->media;
-  }
-
-  public function setMedia(Media $media)
-  {
-    $this->media = $media;
-  }
-
-  public function setDescription($description)
-  {
-    $this->description = $description;
-
-    return $this;
-  }
-
-  public function getDescription()
-  {
-    return $this->description;
-  }
+    public function setMedia(Media $media)
+    {
+        $this->media = $media;
+    }
 }
