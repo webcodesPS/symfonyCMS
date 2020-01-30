@@ -26,7 +26,7 @@ class ElementAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name')
+            ->addIdentifier('name', null, ['label' => 'Name'])
             ->add('_action', null, array(
                 'actions' => array(
                     'edit' => array(),

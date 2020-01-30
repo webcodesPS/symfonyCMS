@@ -34,7 +34,6 @@ class ContentElementAdmin extends AbstractAdmin
         'required' => true
       ])
       ->add('content', null, ['label' => 'Content'])
-      ->add('title', null, ['label' => 'Title'])
     ;
   }
 

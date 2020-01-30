@@ -2,6 +2,8 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\ContentElement;
+use App\Entity\Element;
 use App\Entity\Page;
 use App\Entity\ContentPage;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -23,32 +25,43 @@ class AppFixtures extends Fixture implements FixtureInterface, ContainerAwareInt
 
     public function load(ObjectManager $manager)
     {
-        $page = new Page();
-        $page->setName('Home page');
-        $page->setSlug('Home page');
-        $manager->persist($page);
+//        $page = new Page();
+//        $page->setName('Home page');
+//        $page->setSlug('Home page');
+//        $manager->persist($page);
+//
+//        $content = new ContentPage();
+//        $content->setPage($page);
+//        $content->setLocale($this->container->getParameter('defaults')['locale']);
+//        $content->setName('home page');
+//        $content->setContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit...');
+//        $manager->persist($content);
+//
+//        $menu = new Menu();
+//        $menu->setRoot($menu);
+//        $menu->setPage($page);
+//        $menu->setName(' == ROOT == ');
+//        $menu->setLaveledTitle(' == ROOT == ');
+//        $menu->setEnabled(1);
+//        $manager->persist($menu);
+//
+//        $dataList = new DataList();
+//        $dataList->setRoot($dataList);
+//        $dataList->setName(' == ROOT == ');
+//        $dataList->setLaveledTitle(' == ROOT == ');
+//        $dataList->setEnabled(1);
+//        $manager->persist($dataList);
 
-        $content = new ContentPage();
-        $content->setPage($page);
-        $content->setLocale($this->container->getParameter('defaults')['locale']);
-        $content->setName('home page');
-        $content->setContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit...');
-        $manager->persist($content);
+      $elements = $manager->getRepository(Element::class)->findAll();
 
-        $menu = new Menu();
-        $menu->setRoot($menu);
-        $menu->setPage($page);
-        $menu->setName(' == ROOT == ');
-        $menu->setLaveledTitle(' == ROOT == ');
-        $menu->setEnabled(1);
-        $manager->persist($menu);
 
-        $dataList = new DataList();
-        $dataList->setRoot($dataList);
-        $dataList->setName(' == ROOT == ');
-        $dataList->setLaveledTitle(' == ROOT == ');
-        $dataList->setEnabled(1);
-        $manager->persist($dataList);
+      foreach ($elements as $element) {
+        $elementContent = new ContentElement();
+        $elementContent->setElement($element);
+        $elementContent->setLocale('en');
+        $elementContent->setContent($element->getName().'-en');
+        $manager->persist($elementContent);
+      }
 
         $manager->flush();
     }

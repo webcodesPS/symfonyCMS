@@ -6,8 +6,6 @@ class ContentElement
 {
   private $id;
 
-  private $title;
-
   private $locale;
 
   private $content;
@@ -19,16 +17,9 @@ class ContentElement
     return $this->getContent() .' - '.strtoupper($this->getLocale()) ?: '';
   }
 
-  public function getTitle(): ?string
+  public function getId(): ?int
   {
-    return $this->title;
-  }
-
-  public function setTitle(?string $title): self
-  {
-    $this->title = $title;
-
-    return $this;
+    return $this->id;
   }
 
   public function getLocale(): ?string
@@ -53,11 +44,6 @@ class ContentElement
     $this->content = $content;
 
     return $this;
-  }
-
-  public function getId(): ?int
-  {
-    return $this->id;
   }
 
   public function getElement(): ?Element
