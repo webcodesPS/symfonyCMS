@@ -11,7 +11,7 @@
 
         <field name="name" column="name" length="128"/>
 
-        <field name="enabled" type="boolean" column="enabled"/>
+        <field name="enabled" type="boolean" column="enabled" nullable="true" />
 
         <field name="slug" column="slug" length="128" unique="true">
             <gedmo:slug unique="true" style="default" updatable="true" separator="-" fields="name" />

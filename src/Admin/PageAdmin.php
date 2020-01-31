@@ -31,6 +31,11 @@ class PageAdmin extends AbstractAdmin
                 ]
             )
             ->add('galleries', null, ['label' => 'Add galleries'])
+            ->add('enabled', null, [
+                    'attr' => ['checked' => 'checked'],
+                    'label' => 'Is menu enabled'
+                ]
+            )
         ;
     }
 
