@@ -157,7 +157,7 @@ services:
         public: true
 
 
-    app.admin.application.category:
+    app.admin.resources.category:
         class: App\Admin\CategoryAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Categories" }
@@ -169,7 +169,7 @@ services:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
 
-    app.admin.application.collection:
+    app.admin.resources.collection:
         class: App\Admin\CollectionAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Collections" }
@@ -181,7 +181,7 @@ services:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
 
-    app.admin.application.collection.content:
+    app.admin.resources.collection.content:
         class: App\Admin\ContentCollectionAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Collection content" }
@@ -193,7 +193,7 @@ services:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
 
-    app.admin.application.element:
+    app.admin.resources.element:
         class: App\Admin\ElementAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Elements" }
@@ -205,7 +205,7 @@ services:
             - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
         public: true
 
-    app.admin.application.element.content:
+    app.admin.resources.element.content:
         class: App\Admin\ContentElementAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Element content" }

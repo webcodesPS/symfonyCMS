@@ -31,7 +31,14 @@
 
         <one-to-many field="menus" target-entity="App\Entity\Menu" mapped-by="page" />
 
-        <one-to-many field="contents" target-entity="App\Entity\ContentPage" mapped-by="page" />
+        <one-to-many field="contents" target-entity="App\Entity\ContentPage" mapped-by="page">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+            <order-by>
+                <order-by-field name="id" direction="ASC" />
+            </order-by>
+        </one-to-many>
 
         <many-to-many field="galleries" target-entity="App\Application\Sonata\MediaBundle\Entity\Gallery">
             <join-table name="page__gallery">

@@ -22,10 +22,11 @@ class ContentMenuAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('menu', null, ['label' => 'Add to menu',
+            ->add('menu', null, ['label' => 'Add to tree menu',
                 'required'=>true,
                 'query_builder' => function($er) {
-                    return $er->createQueryBuilder('m')->orderBy('m.left', 'ASC');
+                    return $er->createQueryBuilder('m')
+                        ->orderBy('m.left', 'ASC');
                 }
             ])
             ->add('locale', ChoiceFieldMaskType::class, [
@@ -34,7 +35,6 @@ class ContentMenuAdmin extends AbstractAdmin
                 'required' => true
             ])
             ->add('content', null, ['label' => 'Content'])
-            ->add('title', null, ['label' => 'Title'])
         ;
     }
 

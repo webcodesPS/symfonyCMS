@@ -6,8 +6,6 @@ class ContentMenu
 {
     private $id;
 
-    private $title;
-
     private $locale;
 
     private $content;
@@ -17,18 +15,6 @@ class ContentMenu
     public function __toString()
     {
         return $this->getContent() .' - '.strtoupper($this->getLocale()) ?: '';
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(?string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
     }
 
     public function getLocale(): ?string

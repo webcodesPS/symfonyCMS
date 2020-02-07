@@ -19,8 +19,6 @@
             <gedmo:sortable-position/>
         </field>
 
-        <field name="name" column="name" length="64" nullable="true"/>
-
         <field name="content" type="text" column="content" nullable="true"/>
 
     </entity>

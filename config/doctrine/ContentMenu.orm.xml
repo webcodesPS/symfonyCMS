@@ -16,7 +16,5 @@
 
         <field name="content" column="content" length="64" nullable="true"/>
 
-        <field name="title" column="title" length="64" nullable="true"/>
-
     </entity>
 </doctrine-mapping>

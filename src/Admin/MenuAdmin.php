@@ -43,6 +43,8 @@ class MenuAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $isCreate = (boolean)$this->isCurrentRoute('create');
+
         $context = $this->getRequest()->get('context', null);
 
         $subject = $this->getSubject();
@@ -50,7 +52,7 @@ class MenuAdmin extends AbstractAdmin
 
         $formMapper
             ->tab('Menu')
-                ->with('General', ['class' => 'col-md-3'])
+                ->with('General', ['class' => 'col-md-' . ($isCreate ? '9' : '3')])
                     ->add('parent', null, ['label' => 'Parent',
                         'required'=>true,
                         'query_builder' => function($er) use ($id) {
@@ -79,16 +81,20 @@ class MenuAdmin extends AbstractAdmin
                         'attr' => ['checked' => 'checked'],
                         'label' => 'Is menu enabled'
                     ])
-                ->end()
-                ->with('Content', ['class' => 'col-md-9'])
-                    ->add('contents', CollectionType::class, ['by_reference' => true], [
-                      'edit' => 'inline',
-                      'inline' => 'table',
-                      'sortable' => 'position',
-                      'link_parameters' => ['context' => $context],
-                    ])
-                    ->end()
                 ->end();
+
+            if (!$isCreate)
+                $formMapper
+                    ->with('Content', ['class' => 'col-md-9'])
+                        ->add('contents', CollectionType::class, ['by_reference' => true], [
+                          'edit' => 'inline',
+                          'inline' => 'table',
+                          'sortable' => 'position',
+                          'link_parameters' => ['context' => $context],
+                        ])
+                        ->end()
+                    ->end()
+                ;
         ;
     }
 

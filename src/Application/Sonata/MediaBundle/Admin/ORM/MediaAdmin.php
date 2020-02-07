@@ -25,8 +25,6 @@ class MediaAdmin extends MediaBaseAdmin
    */
   public function configureListFields(ListMapper $listMapper)
   {
-    echo 'hhhhhhhhhhhhhhhhhhhh';
-
     // parent::configureListFields($listMapper);
   }
 

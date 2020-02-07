@@ -53,14 +53,33 @@ class AppFixtures extends Fixture implements FixtureInterface, ContainerAwareInt
         $dataList->setEnabled(1);
         $manager->persist($dataList);
 
-//        $elements = $manager->getRepository(Element::class)->findAll();
-//        foreach ($elements as $element) {
-//            $elementContent = new ContentElement();
-//            $elementContent->setElement($element);
-//            $elementContent->setLocale('en');
-//            $elementContent->setContent($element->getName().'-EN');
-//            $manager->persist($elementContent);
-//        }
+        $csv = fopen(dirname(__FILE__).'/Data/elements.csv', 'r');
+        $i = 0;
+        while (!feof($csv)) {
+            $line = fgetcsv($csv);
+            $element[$i] = new Element();
+            $element[$i]->setName($line[0]);
+            $manager->persist($element[$i]);
+            $i += 1;
+        }
+
+        $elements = $manager->getRepository(Element::class)->findAll();
+
+        foreach ($elements as $element) {
+            $elementContent = new ContentElement();
+            $elementContent->setElement($element);
+            $elementContent->setLocale('pl');
+            $elementContent->setContent($element->getName());
+            $manager->persist($elementContent);
+        }
+
+        foreach ($elements as $element) {
+            $elementContent = new ContentElement();
+            $elementContent->setElement($element);
+            $elementContent->setLocale('en');
+            $elementContent->setContent($element->getName().'-EN');
+            $manager->persist($elementContent);
+        }
 
         $manager->flush();
     }

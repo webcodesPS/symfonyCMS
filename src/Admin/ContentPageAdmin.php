@@ -27,13 +27,6 @@ class ContentPageAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper
-            ->add('name', null, [
-                    'label' => 'Content name',
-                    'required' => true
-                ]
-            )
-        ;
 
         if (!$this->hasParentFieldDescription()) {
             $formMapper->add('page', ModelListType::class, [
@@ -54,14 +47,14 @@ class ContentPageAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, ['label' => 'Name'])
+            ->add('page', null, ['label' => 'Page name'])
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', null, ['label' => 'Name'])
+            ->addIdentifier('page', null, ['label' => 'Page name'])
             ->add('locale', null, ['label' => 'Locale'])
             ->add('content', 'html', ['label' => 'Content'])
             ->add('_action', null, [

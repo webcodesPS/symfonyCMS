@@ -6,12 +6,12 @@
     <entity repository-class="App\Repository\MenuRepository" name="App\Entity\Menu" table="menu">
 
         <id name="id" type="integer" column="id">
-            <generator strategy="AUTO"/>
+            <generator/>
         </id>
 
-        <field name="laveled_title" type="string" column="laveled_title" length="64" nullable="true"/>
+        <field name="laveled_title" column="laveled_title" length="64" nullable="true"/>
 
-        <field name="name" type="string" column="name" length="128" nullable="true"/>
+        <field name="name" column="name" length="128" nullable="true"/>
 
         <indexes>
             <index name="name_idx" columns="name"/>

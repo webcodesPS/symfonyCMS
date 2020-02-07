@@ -10,18 +10,28 @@ sonata_admin:
         blocks:
             - { type: sonata.admin.block.admin_list, position: left }
         groups:
-            menu:
-                label: Navigate
-                icon: '<i class="fa fa-map-signs" aria-hidden="true"></i>'
-                items:
-                    - cms.admin.menu
-                    - cms.admin.content.menu
             pages:
                 label: Pages
                 icon: '<i class="fa fa-newspaper-o" aria-hidden="true"></i>'
                 items:
                     - cms.admin.page
                     - cms.admin.content.page
+            menu:
+                label: Navigate
+                icon: '<i class="fa fa-map-signs" aria-hidden="true"></i>'
+                items:
+                    - cms.admin.menu
+                    - cms.admin.content.menu
+            resources:
+                label: Resources
+                icon: '<i class="fa fa-picture-o" aria-hidden="true"></i>'
+                items:
+                    - app.admin.resources.category
+                    - app.admin.resources.collection
+                    - app.admin.resources.collection.content
+                    - app.admin.resources.element
+                    - app.admin.resources.element.content
+                roles: [ ROLE_ADMIN ]
             datalist:
                 label: Data list
                 icon: '<i class="fa fa-list" aria-hidden="true"></i>'
@@ -42,16 +52,6 @@ sonata_admin:
                     - cms.admin.media
 #                    - sonata.media.admin.media
                     - sonata.media.admin.gallery
-                roles: [ ROLE_ADMIN ]
-            application:
-                label: Administration
-                icon: '<i class="fa fa-picture-o" aria-hidden="true"></i>'
-                items:
-                    - app.admin.application.category
-                    - app.admin.application.collection
-                    - app.admin.application.collection.content
-                    - app.admin.application.element
-                    - app.admin.application.element.content
                 roles: [ ROLE_ADMIN ]
 
 
