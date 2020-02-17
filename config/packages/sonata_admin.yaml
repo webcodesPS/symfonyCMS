@@ -11,19 +11,22 @@ sonata_admin:
             - { type: sonata.admin.block.admin_list, position: left }
         groups:
             pages:
-                label: Pages
+                label: 'app.admin.group.pages'
+                label_catalogue: 'messages'
                 icon: '<i class="fa fa-newspaper-o" aria-hidden="true"></i>'
                 items:
                     - cms.admin.page
                     - cms.admin.content.page
-            menu:
-                label: Navigate
+            navigate:
+                label: 'app.admin.group.navigate'
+                label_catalogue: 'messages'
                 icon: '<i class="fa fa-map-signs" aria-hidden="true"></i>'
                 items:
                     - cms.admin.menu
                     - cms.admin.content.menu
             resources:
-                label: Resources
+                label: 'app.admin.group.resources'
+                label_catalogue: 'messages'
                 icon: '<i class="fa fa-picture-o" aria-hidden="true"></i>'
                 items:
                     - app.admin.resources.category
@@ -33,27 +36,29 @@ sonata_admin:
                     - app.admin.resources.element.content
                 roles: [ ROLE_ADMIN ]
             datalist:
-                label: Data list
+                label: 'app.admin.group.datalist'
+                label_catalogue: 'messages'
                 icon: '<i class="fa fa-list" aria-hidden="true"></i>'
                 items:
                     - cms.admin.datalist
                 roles: [ ROLE_ADMIN ]
             users:
-                label: Users
+                label: 'app.admin.group.users'
+                label_catalogue: 'messages'
                 icon: '<i class="fa fa-user-secret" aria-hidden="true"></i>'
                 items:
                     - sonata.user.admin.user
                     - sonata.user.admin.group
                 roles: [ ROLE_ADMIN ]
             media:
-                label: Media
+                label: 'app.admin.group.media'
+                label_catalogue: 'messages'
                 icon: '<i class="fa fa-picture-o" aria-hidden="true"></i>'
                 items:
                     - cms.admin.media
 #                    - sonata.media.admin.media
                     - sonata.media.admin.gallery
                 roles: [ ROLE_ADMIN ]
-
 
     search: true
     options:

@@ -34,7 +34,6 @@ class AppFixtures extends Fixture implements FixtureInterface, ContainerAwareInt
         $content = new ContentPage();
         $content->setPage($page);
         $content->setLocale($this->container->getParameter('defaults')['locale']);
-        $content->setName('home page');
         $content->setContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit...');
         $manager->persist($content);
 
@@ -53,32 +52,36 @@ class AppFixtures extends Fixture implements FixtureInterface, ContainerAwareInt
         $dataList->setEnabled(1);
         $manager->persist($dataList);
 
-        $csv = fopen(dirname(__FILE__).'/Data/elements.csv', 'r');
-        $i = 0;
-        while (!feof($csv)) {
-            $line = fgetcsv($csv);
-            $element[$i] = new Element();
-            $element[$i]->setName($line[0]);
-            $manager->persist($element[$i]);
-            $i += 1;
-        }
+        $elements = [];
 
-        $elements = $manager->getRepository(Element::class)->findAll();
+        try {
+            $csv = fopen(dirname(__FILE__).'/Data/elements.csv', 'r');
+            $i = 0;
+            while (!feof($csv)) {
+                $line = fgetcsv($csv);
+                $elements[$i] = new Element();
+                $elements[$i]->setName($line[0]);
+                $manager->persist($elements[$i]);
+                $i += 1;
+            }
 
-        foreach ($elements as $element) {
-            $elementContent = new ContentElement();
-            $elementContent->setElement($element);
-            $elementContent->setLocale('pl');
-            $elementContent->setContent($element->getName());
-            $manager->persist($elementContent);
-        }
+        } finally {
 
-        foreach ($elements as $element) {
-            $elementContent = new ContentElement();
-            $elementContent->setElement($element);
-            $elementContent->setLocale('en');
-            $elementContent->setContent($element->getName().'-EN');
-            $manager->persist($elementContent);
+            foreach ($elements as $element) {
+                $elementContent = new ContentElement();
+                $elementContent->setElement($element);
+                $elementContent->setLocale('pl');
+                $elementContent->setContent($element->getName());
+                $manager->persist($elementContent);
+            }
+
+            foreach ($elements as $element) {
+                $elementContent = new ContentElement();
+                $elementContent->setElement($element);
+                $elementContent->setLocale('en');
+                $elementContent->setContent($element->getName().'-EN');
+                $manager->persist($elementContent);
+            }
         }
 
         $manager->flush();

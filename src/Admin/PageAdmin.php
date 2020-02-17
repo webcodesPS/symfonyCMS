@@ -55,6 +55,7 @@ class PageAdmin extends AbstractAdmin
             ->add('contents', ModelType::class, [
                 'multiple' => true,
             ])
+            ->add('galleries')
             ->add('_action', null, [
                 'actions' => [
                     'edit' => [],

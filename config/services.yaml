@@ -119,7 +119,7 @@ services:
     cms.admin.content.page:
         class: App\Admin\ContentPageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Contents" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Page content" }
         arguments:
             - ~
             - App\Entity\ContentPage

@@ -10,11 +10,19 @@ breadcrumb:
   link_content_home_create: Content home create
   link_content_menu_create: Content menu create
   link_data_list_list: Data list
+  link_category_list: Category list
+  link_category_create: Category create
+  link_element_list: Element list
+  link_element_create: Element create
+  link_content_element_list: Content element list
+  link_content_element_create: Create element content
+
 list:
   label_id: Id
   label__action: Action
   label_contents: Translate content
   label_enabled: Enabled
+  label_galleries: Galleries
 form:
   label_content: Content
   label_contents: Content
@@ -23,3 +31,29 @@ form:
   label_home_has_contents: Home has contents
   label_position: Position
   label_page: Page
+  label_name: Name
+  label_category: Category
+  label_elements: Elements
+  label_media: Media
+  label_collection: Resource
+
+Pages: Pages
+Page content: Page content
+Navigate: Navigate
+Content: Content
+Resources: Resources
+Categories: Categories
+Collections: Resources
+Collection content: Collection content
+Elements: Elements
+Elements content: Elements content
+
+app:
+  admin:
+    group:
+      pages: Pages
+      navigate: Navigate
+      resources: Resources
+      datalist: Data list
+      users: Users
+      media: Media
