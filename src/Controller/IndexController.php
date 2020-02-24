@@ -48,7 +48,7 @@ class IndexController extends AbstractController
     {
         $page = $this->getDoctrine()
             ->getRepository(Page::class)
-            ->findPage($request->getLocale());
+            ->findPage($request->getLocale(), $page);
 
         if(empty($page)) {
             throw $this->createNotFoundException();

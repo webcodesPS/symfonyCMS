@@ -74,7 +74,6 @@ sonata_admin:
     assets:
         extra_stylesheets:
             - assets/sonata/style.css
-            - bundles/sonatatranslation/css/sonata-translation.css
         extra_javascripts:
             - assets/sonata/script.js
 
