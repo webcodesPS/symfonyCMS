@@ -94,7 +94,7 @@ services:
     cms.admin.content.menu:
         class: App\Admin\ContentMenuAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Content" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Menu content" }
         arguments:
             - ~
             - App\Entity\ContentMenu
