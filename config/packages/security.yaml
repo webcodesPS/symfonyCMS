@@ -25,6 +25,7 @@ security:
                 use_forward:    false
                 check_path:     sonata_user_admin_security_check
                 failure_path:   sonata_user_admin_security_login
+                csrf_token_generator: security.csrf.token_manager
                 default_target_path:   sonata_admin_dashboard
                 success_handler: sonata.user.google.authenticator.success_handler
             logout:

@@ -19,6 +19,8 @@ class User extends BaseUser
      */
     protected $id;
 
+    protected $twoStepVerificationCode;
+
     /**
      * Get id.
      *
@@ -27,5 +29,17 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setTwoStepVerificationCode($twoStepVerificationCode)
+    {
+        $this->twoStepVerificationCode = $twoStepVerificationCode;
+
+        return $this;
+    }
+
+    public function getTwoStepVerificationCode()
+    {
+        return $this->twoStepVerificationCode;
     }
 }

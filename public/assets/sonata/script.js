@@ -7,4 +7,9 @@ $(document).ready(function() {
         }
     });
 
-})
+    ['/pl', '/en'].forEach((v, k) => {
+        $('.nav.navbar-nav > li:nth-child('+ (k+1).toString() +') > a')
+            .attr('href', v + window.location.pathname.slice(3));
+    });
+
+});

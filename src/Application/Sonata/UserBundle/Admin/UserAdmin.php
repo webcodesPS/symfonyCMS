@@ -128,6 +128,9 @@ class UserAdmin extends AbstractAdmin
             ->with('Groups')
                 ->add('groups')
             ->end()
+            ->with('Security')
+                ->add('twoStepVerificationCode')
+            ->end()
         ;
     }
 
@@ -147,7 +150,10 @@ class UserAdmin extends AbstractAdmin
                 ->with('Status', ['class' => 'col-md-4'])->end()
                 ->with('Groups', ['class' => 'col-md-4'])->end()
                 ->with('Keys', ['class' => 'col-md-4'])->end()
-                ->with('Roles', ['class' => 'col-md-12'])->end()
+                ->with('Two step verification code', ['class' => 'col-md-4'])
+                    ->add('twoStepVerificationCode')
+                ->end()
+                ->with('Roles', ['class' => 'col-md-8'])->end()
             ->end()
         ;
 

@@ -5,7 +5,7 @@ sonata_admin:
         role_admin: ROLE_ADMIN
         role_super_admin: ROLE_SUPER_ADMIN
 
-    title: 'Admin'
+    title: 'CMS'
     dashboard:
         blocks:
             - { type: sonata.admin.block.admin_list, position: left }
@@ -68,6 +68,7 @@ sonata_admin:
     title_logo: assets/sonata/img/logo_cms.png
 
     templates:
+        layout: system/sonata/standard_layout.html.twig
         edit: system/sonata/edit.html.twig
         outer_list_rows_tree: system/sonata/list_outer_rows_tree.html.twig
 

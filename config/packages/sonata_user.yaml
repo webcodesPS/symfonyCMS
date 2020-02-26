@@ -1,12 +1,14 @@
 sonata_user:
     google_authenticator:
         enabled: true
-        server:  192.168.43.156
+        server:  192.168.0.1
         ip_white_list:
-            - 192.168.43.156
+            - 192.168.0.1
         forced_for_role:
             - ROLE_SUPER_ADMIN
     security_acl: false
+    impersonating:
+        route: sonata_admin_dashboard
     manager_type: orm # can be orm or mongodb
 #  mailer: custom.mailer.service.id
     table:
